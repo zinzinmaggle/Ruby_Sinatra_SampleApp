@@ -1,0 +1,37 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="<%= url('./stylesheets/milligram.css') %>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Sinatra Sample App</title>
+</head>
+
+<body>
+  <div id="main">
+  <div class="row" id="layout-navbar-header-container">
+      <div class="column" id="navbar-header-left">
+        <div class="row" id="navbar-header-menu-and-infos-container">
+          <div class="column" id="menu-and-infos"><a href="#"><i class="material-icons md-light md-36">close</i></a></div>
+        </div>
+      </div>
+      <div class="column" id="navbar-header-right">
+        <div class="row" id="navbar-header-commands-container">
+          <div class="column" id="commands-left"><h3 id="commands-left-title-controller-name"> Home</h3></div>
+          <div class="column" id="commands-right"><a href="#"><i class="material-icons md-light md-36">chat_bubble_outline</i></a><a href="#"><i class="material-icons md-light md-36">notifications_none</i></a><a href="/settings"><i class="material-icons md-light md-36">settings</i></a><a href="/logout"><i class="material-icons md-light md-36">power_settings_new</i></a></div>
+        </div>
+      </div>
+  </div>
+  <div class="row" id="layout-body-container">
+      <div class="column" id="body-left">
+        <ul id="body-left-menu">
+          <li class="body-left-menu-item">Home <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
+          <li class="body-left-menu-item">Javascript <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
+          <li class="body-left-menu-item">Ruby <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
+          <li class="body-left-menu-item">C# <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
+        </ul>
+      </div>
+      <div class="column" id="body-right">
+         <%= yield %>
+      </div>
+  </div>
+
+  </div>
+</body>

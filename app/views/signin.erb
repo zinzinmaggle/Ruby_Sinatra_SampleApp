@@ -1,0 +1,19 @@
+<div id="login-card-layout">
+    <div id="login-card-layout-form-container" align="center">
+      <form method="POST" action="/">
+        <fieldset>
+          <h2>Sign-in form</h2>
+          <input type="text" id="usernameField" placeholder="@Username" name="user[username]">
+          <input type="password" id="passwordField" placeholder="@Password" name="user[password]">
+          <% if  flash[:success] or flash[:error] %>
+            <blockquote>
+              <p><em><%= flash[:success]  %>
+              <%= flash[:error] %></em></p>
+            </blockquote>
+          <% end %>
+          <input class="button-primary" type="submit" value="Sign-in">
+          <a class="button button-outline" href="./register">New ?</a>
+        </fieldset>
+      </form>
+    </div>
+</div>

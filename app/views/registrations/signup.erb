@@ -1,0 +1,20 @@
+<div id="signup-card-layout">
+    <div id="signup-card-layout-form-container" align="center">
+      <form method="POST" action="/register">
+        <fieldset>
+          <h2>Sign-up form</h2>
+          <input type="text" id="usernameField" placeholder="@Username" name="user[username]">
+          <input type="password" id="passwordField" placeholder="@Password" name="user[password]">
+          <input type="password" id="repasswordField" placeholder="@Confirm Password" name="user[rpassword]">
+          <% if  flash[:success] or flash[:error] %>
+            <blockquote>
+              <p><em><%= flash[:success]  %>
+              <%= flash[:error] %></em></p>
+            </blockquote>
+          <% end %>
+          <input class="button-primary" type="submit" value="Sign Up !">
+          <a class="button button-outline" href="/">Back to login page</a>
+        </fieldset>
+      </form>
+    </div>
+</div>
