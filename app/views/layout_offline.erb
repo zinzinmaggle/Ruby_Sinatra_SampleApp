@@ -1,14 +1,34 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="<%= url('./stylesheets/milligram.css') %>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="<%= url('./stylesheets/utils.css') %>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="<%= url('./scripts/libraries/jquery-3.2.1.min.js') %>"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <title>Sinatra Sample App</title>
 </head>
 
 <body>
-  <div id="main">
-   <div class="row" id="layout-colored-row-1">
-   </div>
-       <%= yield %>
-   <div class="row" id="layout-colored-row-2">
-   </div>
+  <div id="main" style="height:100%;background:url(<%= url('./img/sampleOfflineLayout.png') %>)">
+         <%= yield %>
   </div>
+  <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar" id="snackbar-offline">
+    <div class="mdl-snackbar__text">
+    </div>
+    <button type="button" class="mdl-snackbar__action"></button>
+  </div>
+  <script type="text/javascript">
+  $(function(){
+    var notification = document.querySelector('#snackbar-offline');
+    var data = {
+    message: '<%= flash[:success]  %> <%= flash[:error] %>',
+    actionHandler: function(event) {},
+    actionText: 'Close',
+    timeout: 10000
+    };
+    <% if  flash[:success] or flash[:error] %>
+      notification.MaterialSnackbar.showSnackbar(data);
+    <% end %>
+  });
+  </script>
 </body>

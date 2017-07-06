@@ -1,37 +1,51 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="<%= url('./stylesheets/milligram.css') %>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="<%= url('./stylesheets/utils.css') %>">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="<%= url('./scripts/libraries/jquery-3.2.1.min.js') %>"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <title>Sinatra Sample App</title>
 </head>
 
 <body>
   <div id="main">
-  <div class="row" id="layout-navbar-header-container">
-      <div class="column" id="navbar-header-left">
-        <div class="row" id="navbar-header-menu-and-infos-container">
-          <div class="column" id="menu-and-infos"><a href="#"><i class="material-icons md-light md-36">close</i></a></div>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row" id="header-row-layout-online">
+          <!-- Title -->
+          <span class="mdl-layout-title"><%= flash[:route_name] %></span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href="" ><i class="material-icons material-icons-io" id="large-screen-chat-none-icon">chat_bubble_outline</i><div class="mdl-tooltip" for="large-screen-chat-none-icon">Conversations (0)</div></a>
+            <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io"  id="large-screen-notifications-none-icon">notifications_none</i><div class="mdl-tooltip" for="large-screen-notifications-none-icon">Notifications (0)</div></a>
+            <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io"  id="large-screen-settings-icon">settings</i><div class="mdl-tooltip" for="large-screen-settings-icon">Settings</div></a>
+            <a class="mdl-navigation__link" href="/logout"><i class="material-icons material-icons-io" id="large-screen-logout-icon" >exit_to_app</i><div class="mdl-tooltip" for="large-screen-logout-icon">Sign-out</div></a>
+          </nav>
+          <nav class="mdl-navigation mdl-layout--small-screen-only">
+            <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io" id="small-screen-chat-none-icon">chat_bubble_outline</i><div class="mdl-tooltip" for="small-screen-chat-none-icon">Conversations (0)</div></a>
+            <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io" id="small-screen-notifications-none-icon">notifications_none</i><div class="mdl-tooltip" for="small-screen-notifications-none-icon">Notifications (0)</div></a>
+          </nav>
         </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Catégories</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="/dashboard/<%=@user.id%>/javascript">Javascript <i class="material-icons material-icons-io icons-side-menu">keyboard_arrow_right</i></a>
+          <a class="mdl-navigation__link" href="/dashboard/<%=@user.id%>/ruby">Ruby <i class="material-icons material-icons-io icons-side-menu">keyboard_arrow_right</i></a>
+          <a class="mdl-navigation__link" href="/dashboard/<%=@user.id%>/csharp">C# <i class="material-icons material-icons-io icons-side-menu">keyboard_arrow_right</i></a>
+          <a class="mdl-navigation__link" href="/dashboard/<%=@user.id%>/python">Pyhton<i class="material-icons material-icons-io icons-side-menu">keyboard_arrow_right</i></a>
+        </nav>
+        <nav class="mdl-navigation mdl-layout--small-screen-only" id="mobile-side-menu-nav-2">
+          <a class="mdl-navigation__link" href="">Settings <i class="material-icons material-icons-io icons-side-menu">settings</i></a>
+          <a class="mdl-navigation__link" href="/logout">Sign-out <i class="material-icons material-icons-io icons-side-menu" >exit_to_app</i></a>
+        </nav>
       </div>
-      <div class="column" id="navbar-header-right">
-        <div class="row" id="navbar-header-commands-container">
-          <div class="column" id="commands-left"><h3 id="commands-left-title-controller-name"> Home</h3></div>
-          <div class="column" id="commands-right"><a href="#"><i class="material-icons md-light md-36">chat_bubble_outline</i></a><a href="#"><i class="material-icons md-light md-36">notifications_none</i></a><a href="/settings"><i class="material-icons md-light md-36">settings</i></a><a href="/logout"><i class="material-icons md-light md-36">power_settings_new</i></a></div>
-        </div>
-      </div>
-  </div>
-  <div class="row" id="layout-body-container">
-      <div class="column" id="body-left">
-        <ul id="body-left-menu">
-          <li class="body-left-menu-item">Home <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
-          <li class="body-left-menu-item">Javascript <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
-          <li class="body-left-menu-item">Ruby <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
-          <li class="body-left-menu-item">C# <span class="body-left-menu-item-icon"><i class="material-icons">chevron_right</i><span></li>
-        </ul>
-      </div>
-      <div class="column" id="body-right">
-         <%= yield %>
-      </div>
-  </div>
-
+      <main class="mdl-layout__content">
+        <div class="page-content"><%= yield %></div>
+      </main>
+    </div>
   </div>
 </body>

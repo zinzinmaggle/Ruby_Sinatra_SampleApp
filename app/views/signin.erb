@@ -1,19 +1,38 @@
-<div id="login-card-layout">
-    <div id="login-card-layout-form-container" align="center">
-      <form method="POST" action="/">
-        <fieldset>
-          <h2>Sign-in form</h2>
-          <input type="text" id="usernameField" placeholder="@Username" name="user[username]">
-          <input type="password" id="passwordField" placeholder="@Password" name="user[password]">
-          <% if  flash[:success] or flash[:error] %>
-            <blockquote>
-              <p><em><%= flash[:success]  %>
-              <%= flash[:error] %></em></p>
-            </blockquote>
-          <% end %>
-          <input class="button-primary" type="submit" value="Sign-in">
-          <a class="button button-outline" href="./register">New ?</a>
-        </fieldset>
-      </form>
+<div class="demo-card-wide mdl-card mdl-shadow--4dp" id="mydiv">
+  <form method="POST" action="/">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text" ><i class="material-icons material-icons-io" style="margin-right:20px">flight_takeoff</i> Sign-in form </h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="text" id="usernameField" name="user[username]">
+      <label class="mdl-textfield__label" for="usernameField">Username</label>
     </div>
+    <div class="mdl-textfield mdl-js-textfield">
+      <input class="mdl-textfield__input" type="password" id="passwordField" name="user[password]">
+      <label class="mdl-textfield__label" for="passwordField">Password</label>
+    </div>
+  </div><br/>
+  <div class="mdl-card__actions mdl-card--border">
+    <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit" value="Sign-in">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="float:right;" href="./register">
+      New ?
+    </a>
+  </div>
+  </form>
 </div>
+
+<style>
+#mydiv {
+  width: 30em;
+  height: 22em;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-right: 78px;
+  position: absolute;
+  top: 48.5%;
+  left: 50%;
+  margin-top: -9em;
+  margin-left: -15em;
+}
+</style>

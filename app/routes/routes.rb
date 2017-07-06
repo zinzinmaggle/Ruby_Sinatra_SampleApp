@@ -1,7 +1,6 @@
 class MyApp < Sinatra::Base
   get '/' do
     user_already_logged
-    @controller_name = "index"
     erb :signin, :layout => :layout_offline
   end
 
