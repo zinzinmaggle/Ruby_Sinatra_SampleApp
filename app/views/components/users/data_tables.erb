@@ -1,26 +1,37 @@
-<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
   <thead>
     <tr>
-      <th class="mdl-data-table__cell--non-numeric">Material</th>
-      <th>Quantity</th>
-      <th>Unit price</th>
+      <th class="mdl-data-table__cell--non-numeric no-left-aligned-th"><%= @colonne1 %></th>
+      <th><%= @colonne2 %></th>
+      <th class="no-left-aligned-th">Actions</th>
     </tr>
   </thead>
   <tbody>
+    <% @applications.each do |application| %>
     <tr>
-      <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-      <td>25</td>
-      <td>$2.90</td>
-    </tr>
+      <td class="mdl-data-table__cell--non-numeric"><%= application.appname %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= application.appframework %></td>
+      <td class="mdl-data-table__cell--non-numeric"><input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Delete" style="float:right!important"></td>
     <tr>
-      <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-      <td>50</td>
-      <td>$1.25</td>
-    </tr>
+    <% end %>
     <tr>
-      <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-      <td>10</td>
-      <td>$2.35</td>
+      <form method="POST">
+        <td class="mdl-data-table__cell--non-numeric">
+          <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="sample1" name="dataTable[column1field]">
+          <label class="mdl-textfield__label" for="sample1">Ex : "Sample app with ruby ..."</label>
+          </div>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="sample2" name="dataTable[column2field]">
+          <label class="mdl-textfield__label" for="sample2">Ex : "Sinatra"</label>
+          </div>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Save" style="float:right!important">
+        </td>
+      </form>
     </tr>
   </tbody>
 </table>

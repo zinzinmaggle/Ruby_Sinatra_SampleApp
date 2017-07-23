@@ -1,23 +1,30 @@
 <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
   <thead>
     <tr>
-      <th class="mdl-data-table__cell--non-numeric no-left-aligned-th">App Name</th>
-      <th>Framework</th>
-      <th class="no-left-aligned-th">Action</th>
+      <th class="mdl-data-table__cell--non-numeric no-left-aligned-th">Application Name</th>
+      <th>Framework Used</th>
+      <th class="no-left-aligned-th">Actions</th>
     </tr>
   </thead>
   <tbody>
+    
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric">Salut</td>
+      <td class="mdl-data-table__cell--non-numeric">salut</td>
+      <td class="mdl-data-table__cell--non-numeric"><input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Delete" style="float:right!important"></td>
+    <tr>
+    
     <tr>
       <form method="POST">
         <td class="mdl-data-table__cell--non-numeric">
           <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="sample1" name="app-name">
-          <label class="mdl-textfield__label" for="sample1">Ex : "Sample App with Ruby ..."</label>
+          <input class="mdl-textfield__input" type="text" id="sample1" name="dataTable[column1field]">
+          <label class="mdl-textfield__label" for="sample1">Ex : "Sample app with ruby ..."</label>
           </div>
         </td>
         <td class="mdl-data-table__cell--non-numeric">
           <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="sample2" name="framework-name">
+          <input class="mdl-textfield__input" type="text" id="sample2" name="dataTable[column2field]">
           <label class="mdl-textfield__label" for="sample2">Ex : "Sinatra"</label>
           </div>
         </td>
