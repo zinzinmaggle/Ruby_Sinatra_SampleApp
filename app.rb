@@ -24,8 +24,9 @@ class MyApp < Sinatra::Base
   set :database_file, './config/database.yml'
   # files in static are served on "root"
   set :public_folder, File.dirname(__FILE__) + '/public'
-  # set "/views/layout.haml" as the standard/global template wrapper (yield)
+  # set "/views/layout.erb" as the standard/global template wrapper (yield)
   set :erb, format: :html5
+
 end
 
 # require libs

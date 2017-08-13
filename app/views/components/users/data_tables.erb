@@ -11,27 +11,86 @@
     <tr>
       <td class="mdl-data-table__cell--non-numeric"><%= application.appname %></td>
       <td class="mdl-data-table__cell--non-numeric"><%= application.appframework %></td>
-      <td class="mdl-data-table__cell--non-numeric"><input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Delete" style="float:right!important"></td>
+      <td class="mdl-data-table__cell--non-numeric">
+        <button id="demo-menu-lower-right-<%= application.id %>"class="mdl-button mdl-js-button mdl-button--icon" style="float:right;">
+          <i class="material-icons" style="padding-top:0;">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+            for="demo-menu-lower-right-<%= application.id %>">
+          <li class="mdl-menu__item">
+            <form method="POST" action="<%= @controller_name.downcase %>/download">
+              <input type="hidden" name="dataTable[downloadvalue]" value="<%= application.id %>">
+              <input type="submit" class="mdl-button mdl-js-button" value="Download" style="float:right!important">
+            </form>
+          </li>
+          <li class="mdl-menu__item">
+            <form method="POST" action="<%= @controller_name.downcase %>/delete">
+              <input type="hidden" name="dataTable[removevalue]" value="<%= application.id %>">
+              <input type="submit" class="mdl-button mdl-js-button" value="Remove" >
+            </form>
+          </li>
+        </ul>
+      </td>
     <tr>
     <% end %>
     <tr>
-      <form method="POST">
+      <form method="POST" action="<%= @controller_name.downcase %>/save" enctype="multipart/form-data">
         <td class="mdl-data-table__cell--non-numeric">
           <div class="mdl-textfield mdl-js-textfield">
           <input class="mdl-textfield__input" type="text" id="sample1" name="dataTable[column1field]">
-          <label class="mdl-textfield__label" for="sample1">Ex : "Sample app with ruby ..."</label>
+          <label class="mdl-textfield__label" for="sample1">Ex : "Sample app with <%= @controller_name %> ..."</label>
           </div>
         </td>
         <td class="mdl-data-table__cell--non-numeric">
           <div class="mdl-textfield mdl-js-textfield">
           <input class="mdl-textfield__input" type="text" id="sample2" name="dataTable[column2field]">
-          <label class="mdl-textfield__label" for="sample2">Ex : "Sinatra"</label>
+          <label class="mdl-textfield__label" for="sample2">Ex : "<%= @controller_name %> framework"</label>
           </div>
         </td>
         <td class="mdl-data-table__cell--non-numeric">
-          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Save" style="float:right!important">
+          <input type="file" id="sample3" name="dataTable[column3field]" disabled>
+          <label for="sample3" id="sample3-label" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled>Upload</label>
+          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Save" style="float:right!important;">
         </td>
       </form>
     </tr>
   </tbody>
 </table>
+<script type="text/javascript">
+  $(function(){
+    let field1 = false, field2 = false;
+    function checkInput(field1,field2)
+    {
+      if(field1 && field2)
+      {
+        $("#sample3-label").attr("disabled", false);
+        $("#sample3").attr("disabled", false);
+      }
+      else {
+        $("#sample3-label").attr("disabled", true);
+        $("#sample3").attr("disabled", true);
+      }
+    };
+    $("#sample1").keyup(function () {
+      $(this).val().length > 2 ? field1 = true : field1 = false;
+      checkInput(field1,field2);
+    });
+    $("#sample2").keyup(function () {
+      $(this).val().length > 2 ? field2 = true : field2 = false;
+      checkInput(field1,field2);
+    });
+  });
+</script>
+<style>
+#sample3 {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+#sample3 + label {
+	cursor: pointer; /* "hand" cursor */
+}
+</style>

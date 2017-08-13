@@ -5,6 +5,7 @@ class ApplicationItems < ActiveRecord::Migration[5.1]
       t.string :appframework
       t.integer :userid
       t.string :category
+      t.string :filename
       t.timestamps null: false
   	end
   end

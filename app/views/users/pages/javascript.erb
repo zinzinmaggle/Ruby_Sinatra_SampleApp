@@ -9,29 +9,63 @@
   <tbody>
     
     <tr>
-      <td class="mdl-data-table__cell--non-numeric">Salut</td>
-      <td class="mdl-data-table__cell--non-numeric">salut</td>
-      <td class="mdl-data-table__cell--non-numeric"><input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Delete" style="float:right!important"></td>
-    <tr>
-    
-    <tr>
-      <form method="POST">
+      <form method="POST" action="javascript/save" enctype="multipart/form-data">
         <td class="mdl-data-table__cell--non-numeric">
           <div class="mdl-textfield mdl-js-textfield">
           <input class="mdl-textfield__input" type="text" id="sample1" name="dataTable[column1field]">
-          <label class="mdl-textfield__label" for="sample1">Ex : "Sample app with ruby ..."</label>
+          <label class="mdl-textfield__label" for="sample1">Ex : "Sample app with Javascript ..."</label>
           </div>
         </td>
         <td class="mdl-data-table__cell--non-numeric">
           <div class="mdl-textfield mdl-js-textfield">
           <input class="mdl-textfield__input" type="text" id="sample2" name="dataTable[column2field]">
-          <label class="mdl-textfield__label" for="sample2">Ex : "Sinatra"</label>
+          <label class="mdl-textfield__label" for="sample2">Ex : "Javascript framework"</label>
           </div>
         </td>
         <td class="mdl-data-table__cell--non-numeric">
-          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Save" style="float:right!important">
+          <input type="file" id="sample3" name="dataTable[column3field]" disabled>
+          <label for="sample3" id="sample3-label" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled>Upload</label>
+          <input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="Save" style="float:right!important;">
         </td>
       </form>
     </tr>
   </tbody>
 </table>
+<script type="text/javascript">
+  $(function(){
+    let field1 = false, field2 = false;
+    function checkInput(field1,field2)
+    {
+      if(field1 && field2)
+      {
+        $("#sample3-label").attr("disabled", false);
+        $("#sample3").attr("disabled", false);
+      }
+      else {
+        $("#sample3-label").attr("disabled", true);
+        $("#sample3").attr("disabled", true);
+      }
+    };
+    $("#sample1").keyup(function () {
+      $(this).val().length > 2 ? field1 = true : field1 = false;
+      checkInput(field1,field2);
+    });
+    $("#sample2").keyup(function () {
+      $(this).val().length > 2 ? field2 = true : field2 = false;
+      checkInput(field1,field2);
+    });
+  });
+</script>
+<style>
+#sample3 {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+#sample3 + label {
+	cursor: pointer; /* "hand" cursor */
+}
+</style>

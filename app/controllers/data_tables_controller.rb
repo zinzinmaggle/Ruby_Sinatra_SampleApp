@@ -1,8 +1,9 @@
 class DataTables
-    def initialize(colonne1,colonne2,applications)
+    def initialize(colonne1,colonne2,applications,controller_name)
       @colonne1 = colonne1
       @colonne2 = colonne2
       @applications = applications
+      @controller_name = controller_name
       @template = File.read("app/views/components/users/data_tables.erb")
     end
     def render()
