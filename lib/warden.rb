@@ -60,14 +60,14 @@ class MyApp < Sinatra::Base
       end
     end
 
+    def current_user
+      warden_handler.user
+    end
+
     def user_already_logged
       if warden_handler.authenticated?
         redirect "/dashboard/#{current_user.id}"
       end
-    end
-
-    def current_user
-      warden_handler.user
     end
 
     post '/' do

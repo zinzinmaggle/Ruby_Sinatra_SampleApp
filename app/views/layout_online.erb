@@ -20,9 +20,10 @@
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <span class="mdl-chip mdl-chip--contact">
-                <!-- <span class="mdl-chip__contact mdl-color--pink mdl-color-text--white">A</span> -->
-                <img class="mdl-chip__contact" src="https://www.gravatar.com/avatar/<%#{Digest::MD5.hexdigest(@user.username)}%>"></img>
-                <span class="mdl-chip__text">Logged as <strong><%=@user.username%></strong></span>
+                <a href="https://fr.gravatar.com/" target="_blank" style="color:grey;">
+                  <img class="mdl-chip__contact" src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(@user.username) %>"></img>
+                  <span class="mdl-chip__text">Logged as <strong><%=@user.username%></strong></span>
+                </a>
             </span>
             <a class="mdl-navigation__link" href="" ><i class="material-icons material-icons-io" id="large-screen-chat-none-icon">chat_bubble_outline</i><div class="mdl-tooltip" for="large-screen-chat-none-icon">Conversations (0)</div></a>
             <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io"  id="large-screen-notifications-none-icon">notifications_none</i><div class="mdl-tooltip" for="large-screen-notifications-none-icon">Notifications (0)</div></a>
@@ -30,6 +31,12 @@
             <a class="mdl-navigation__link" href="/logout"><i class="material-icons material-icons-io" id="large-screen-logout-icon" >exit_to_app</i><div class="mdl-tooltip" for="large-screen-logout-icon">Sign-out</div></a>
           </nav>
           <nav class="mdl-navigation mdl-layout--small-screen-only">
+            <span class="mdl-chip mdl-chip--contact">
+                <a href="https://fr.gravatar.com/" target="_blank" style="color:grey;">
+                  <img class="mdl-chip__contact" src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(@user.username) %>"></img>
+                  <span class="mdl-chip__text">Logged as <strong><%=@user.username%></strong></span>
+                </a>
+            </span>
             <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io" id="small-screen-chat-none-icon">chat_bubble_outline</i><div class="mdl-tooltip" for="small-screen-chat-none-icon">Conversations (0)</div></a>
             <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io" id="small-screen-notifications-none-icon">notifications_none</i><div class="mdl-tooltip" for="small-screen-notifications-none-icon">Notifications (0)</div></a>
           </nav>

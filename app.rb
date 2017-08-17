@@ -5,7 +5,7 @@ require 'sass'
 require 'sinatra/activerecord'
 require 'warden'
 require 'bcrypt'
-
+require 'digest/md5'
 # unless ENV['APP_ENV'] == "production"
 #   require 'pry'
 # end

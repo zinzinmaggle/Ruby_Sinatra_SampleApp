@@ -53,4 +53,7 @@ table > thead > tr > th:not(.no-left-aligned-th) {
   padding: 0;
   overflow-y: auto; }
 
+.mdl-layout__tab-bar {
+  z-index: -10 !important; }
+
 /*# sourceMappingURL=utils.css.map */
