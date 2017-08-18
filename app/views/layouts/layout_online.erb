@@ -43,12 +43,8 @@
         </div>
         <% if @tabs %>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <% @tabArray.each_with_index do |item, index| %>
-              <% if index==0 %>
-                <a href="#fixed-tab-<%=item[0]%>" class="mdl-layout__tab  is-active "><%= item[1] %></a>
-              <% else %>
+            <% @tabArray.each_with_index do |item, index| %>  
                 <a href="#fixed-tab-<%=item[0]%>" class="mdl-layout__tab"><%= item[1] %></a>
-              <% end %>
             <% end %>
         </div>
         <% end %>

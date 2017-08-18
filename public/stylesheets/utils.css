@@ -1,59 +1,64 @@
-.material-icons.md-18 {
-  font-size: 18px; }
+/*
+Error: File to import not found or unreadable: MoreAndOverrides.
+       Load paths:
+         C:/Users/WORKINGPC/Documents/Ruby/Projet2/public/stylesheets/sass
+         C:/Users/WORKINGPC/Documents/Ruby/Projet2/app/stylesheets
+        on line 4 of ./public/stylesheets/sass/utils.sass
 
-.material-icons.md-24 {
-  font-size: 24px; }
+1: 
+2: @import Utils_Online
+3: @import Media_Queries
+4: @import MoreAndOverrides
 
-.material-icons.md-36 {
-  font-size: 36px; }
-
-.material-icons.md-48 {
-  font-size: 48px; }
-
-.material-icons.md-dark {
-  color: rgba(0, 0, 0, 0.54); }
-
-.material-icons.md-dark.md-inactive {
-  color: rgba(0, 0, 0, 0.26); }
-
-.material-icons.md-light {
-  color: white; }
-
-.material-icons.md-light.md-inactive {
-  color: rgba(255, 255, 255, 0); }
-
-.material-icons-io {
-  padding-top: 0 !important; }
-
-.icons-side-menu {
-  float: right; }
-
-.page-content {
-  padding: 25px; }
-
-table {
-  width: 100%; }
-
-table > thead > tr > th:not(.no-left-aligned-th) {
-  text-align: left !important; }
-
-.material-icons {
-  padding-top: 25%; }
-
-#mobile-side-menu-nav-2 {
-  padding-top: 0;
-  border-top: lightgrey solid 1px; }
-
-#header-row-layout-online {
-  padding-right: 5px; }
-
-#main {
-  height: 100%;
-  margin: 0 auto;
-  padding: 0;
-  overflow-y: auto; }
-
-.mdl-layout__tab-bar {
-  z-index: -10 !important; }
-
-/*# sourceMappingURL=utils.css.map */
+Backtrace:
+./public/stylesheets/sass/utils.sass:4
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/import_node.rb:67:in `rescue in import'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/import_node.rb:45:in `import'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/import_node.rb:28:in `imported_file'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/import_node.rb:37:in `css_import?'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `block in with_base'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:135:in `with_frame'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/stack.rb:79:in `with_base'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:161:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:209:in `each'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin.rb:82:in `update_stylesheets'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin.rb:54:in `check_for_updates'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sass-3.5.1/lib/sass/plugin/rack.rb:51:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/tempfile_reaper.rb:15:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/lint.rb:49:in `_call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/lint.rb:37:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/show_exceptions.rb:23:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/common_logger.rb:33:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/sinatra-2.0.0/lib/sinatra/base.rb:231:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/chunked.rb:54:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/content_length.rb:15:in `call'
+C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/rack-2.0.3/lib/rack/handler/webrick.rb:86:in `service'
+C:/Ruby24-x64/lib/ruby/2.4.0/webrick/httpserver.rb:140:in `service'
+C:/Ruby24-x64/lib/ruby/2.4.0/webrick/httpserver.rb:96:in `run'
+C:/Ruby24-x64/lib/ruby/2.4.0/webrick/server.rb:290:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: MoreAndOverrides.\A        Load paths:\A          C:/Users/WORKINGPC/Documents/Ruby/Projet2/public/stylesheets/sass\A          C:/Users/WORKINGPC/Documents/Ruby/Projet2/app/stylesheets\A         on line 4 of ./public/stylesheets/sass/utils.sass\A \A 1: \A 2: @import Utils_Online\A 3: @import Media_Queries\A 4: @import MoreAndOverrides"; }

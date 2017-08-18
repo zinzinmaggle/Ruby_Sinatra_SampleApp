@@ -1,12 +1,11 @@
-<div class="demo-card-wide mdl-card mdl-shadow--4dp" id="mydiv2">
-  <form method="POST" action="/register">
+<form method="POST" action="/register">
   <div class="mdl-card__title">
     <h2 class="mdl-card__title-text" ><i class="material-icons material-icons-io" style="margin-right:20px">flight_land</i> Sign-up form </h2>
   </div>
   <div class="mdl-card__supporting-text">
     <div class="mdl-textfield mdl-js-textfield">
       <input class="mdl-textfield__input" type="text" id="usernameField" name="user[username]">
-      <label class="mdl-textfield__label" for="usernameField">Username</label>
+      <label class="mdl-textfield__label" for="usernameField">E-mail address</label>
     </div>
     <div class="mdl-textfield mdl-js-textfield">
       <input class="mdl-textfield__input" type="password" id="passwordField" name="user[password]">
@@ -16,6 +15,9 @@
       <input class="mdl-textfield__input" type="password" id="repasswordField" name="user[rpassword]">
       <label class="mdl-textfield__label" for="repasswordField">Password</label>
     </div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <%= recaptcha_tags %>
+    </div>
   </div><br/>
   <div class="mdl-card__actions mdl-card--border">
     <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit" value="Sign-up">
@@ -23,20 +25,4 @@
       Back to login page
     </a>
   </div>
-  </form>
-</div>
-
-<style>
-#mydiv2 {
-  width: 30em;
-  height: 26em;
-  padding-top: 20px;
-  padding-left: 50px;
-  padding-right: 78px;
-  position: absolute;
-  top: 44%;
-  left: 50%;
-  margin-top: -9em;
-  margin-left: -15em;
-}
-</style>
+</form>

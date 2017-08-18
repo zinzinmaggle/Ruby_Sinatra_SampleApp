@@ -10,7 +10,9 @@
 
 <body>
   <div id="main" style="height:100%;background:url(<%= url('./img/sampleOfflineLayout.png') %>)">
+    <div class="demo-card-wide mdl-card mdl-shadow--4dp" id="mydiv">
          <%= yield %>
+    </div>
   </div>
   <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar" id="snackbar-offline">
     <div class="mdl-snackbar__text">
@@ -24,11 +26,25 @@
     message: '<%= flash[:success]  %> <%= flash[:error] %>',
     actionHandler: function(event) {},
     actionText: 'Close',
-    timeout: 10000
+    timeout: 3000
     };
     <% if  flash[:success] or flash[:error] %>
-      notification.MaterialSnackbar.showSnackbar(data);
+      setTimeout(function(){   notification.MaterialSnackbar.showSnackbar(data); }, <%= @timeout %>);
     <% end %>
   });
   </script>
+  <style>
+  #mydiv {
+    width: 30em;
+    height: auto;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 78px;
+    position: absolute;
+    bottom: 27%;
+    left: 50%;
+    margin-top: -9em;
+    margin-left: -15em;
+  }
+  </style>
 </body>

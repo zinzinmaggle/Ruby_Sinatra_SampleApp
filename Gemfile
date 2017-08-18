@@ -11,3 +11,5 @@ gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'b
 gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 gem 'warden'
 gem 'sinatra-flash'
+gem 'recaptcha'
+gem 'pony'

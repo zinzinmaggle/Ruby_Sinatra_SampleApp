@@ -6,6 +6,9 @@ require 'sinatra/activerecord'
 require 'warden'
 require 'bcrypt'
 require 'digest/md5'
+require 'recaptcha'
+require 'pony'
+
 # unless ENV['APP_ENV'] == "production"
 #   require 'pry'
 # end

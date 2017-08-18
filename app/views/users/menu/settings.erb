@@ -7,8 +7,9 @@
           <div class="mdl-card__supporting-text">
             <form action="<%=@user.id%>/updateProfile" method="POST">
                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                 <input class="mdl-textfield__input" type="text" name="user[usernameOrEmail]" id="username-or-email">
-                 <label class="mdl-textfield__label" for="username-or-email"> Your username or e-mail (actually <strong><%= @user.username %></strong>)</label>
+                 <input class="mdl-textfield__input" type="text" name="user[usernameOrEmail]" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="username-or-email">
+                 <label class="mdl-textfield__label" for="username-or-email"> Your e-mail address(actually <strong><%= @user.username %></strong>)</label>
+                 <span class="mdl-textfield__error">Expected a valid e-mail address</span>
                </div><br/>
                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                  <input class="mdl-textfield__input" type="text" name="profile[name]" id="name">
