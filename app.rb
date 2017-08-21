@@ -8,7 +8,7 @@ require 'bcrypt'
 require 'digest/md5'
 require 'recaptcha'
 require 'pony'
-
+require "base64"
 # unless ENV['APP_ENV'] == "production"
 #   require 'pry'
 # end

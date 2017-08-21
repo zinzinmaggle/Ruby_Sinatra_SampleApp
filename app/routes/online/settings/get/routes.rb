@@ -10,6 +10,7 @@ class MyApp < Sinatra::Base
       @tabArray = Array({:'1' => "User", :'2' => "App"})
       @settingsController = Settings.new(@user.id)
       @settings =  AppSetting.find_by_userid(current_user.id)
+
       @controller_name = @settingsController.controller_name
       @profile = UserProfile.find_by_userid(current_user.id)
     end

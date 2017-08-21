@@ -38,7 +38,6 @@ class MyApp < Sinatra::Base
 
         def authenticate!
             user = User.find_by(username: params['user']['username'])
-
             if user.nil?
                 throw(:warden, message: 'The username you entered does not exist.')
             elsif user.authenticate(params['user']['password'])
@@ -65,21 +64,32 @@ class MyApp < Sinatra::Base
     end
 
     def user_already_logged
-      if warden_handler.authenticated?
-        redirect "/dashboard/#{current_user.id}"
+      user = User.find_by(session_hashed: request.cookies['user'].to_s)
+      if !request.cookies['user'].nil? && request.cookies['user'].to_s != '' && Base64.decode64(user.session_hashed) == Base64.decode64(request.cookies['user'].to_s) && user
+          redirect "/dashboard/#{Base64.decode64(request.cookies['user'])}"
       end
+    end
+
+    def assign_session_hashed
+      userid = Base64.encode64(current_user.id.to_s)
+      response.set_cookie 'user', userid
+      user = User.find_by(username:current_user.username)
+      user.assign_attributes(
+          session_hashed: userid
+      )
+      user.save
     end
 
     post '/' do
         warden_handler.authenticate!
         if session[:return_to].nil?
+            assign_session_hashed
             redirect "/dashboard/#{current_user.id}"
-        else
-            redirect session[:return_to]
         end
     end
 
     get '/logout' do
+        response.set_cookie 'user', nil
         env['warden'].raw_session.inspect
         env['warden'].logout
         flash[:success] = 'Successfully logged out'

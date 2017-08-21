@@ -75,7 +75,7 @@
                </span>
                <span class="mdl-list__item-secondary-action">
                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="settings-appnotifications-checkbox">
-                  <input type="checkbox" name="settings[appnotifications]" id="settings-appnotifications-checkbox" class="mdl-switch__input" <%= (@settings.appnotifications == 'on') ? 'checked' : '' %> />
+                  <input type="checkbox" name="settings[appnotifications]" id="settings-appnotifications-checkbox" class="mdl-switch__input" <%= (!@settings.nil? and @settings.appnotifications == 'on') ? 'checked' : '' %> />
                 </label>
                </span>
                <input type="submit" id="settings-appnotifications-submit-hidden">
