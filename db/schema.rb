@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818120359) do
+ActiveRecord::Schema.define(version: 20170823095959) do
 
   create_table "app_settings", force: :cascade do |t|
     t.string "appnotifications"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170818120359) do
     t.string "username", null: false
     t.string "password", null: false
     t.string "session_hashed", null: false
+    t.string "series_identifier", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

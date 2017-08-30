@@ -7,12 +7,6 @@ class MyApp < Sinatra::Base
       @user = User.find(params['id'])
       if @user.id != current_user.id
         redirect "/dashboard/#{current_user.id}"
-      else
-        session_hashed = Base64.encode64(@user.id.to_s)
-        @user.assign_attributes(
-          session_hashed: session_hashed.to_s
-        )
-        @user.save
       end
       erb :"users/menu/dashboard",:layout => :'layouts/layout_online'
   end

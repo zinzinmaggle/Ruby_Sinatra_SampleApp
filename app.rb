@@ -1,24 +1,22 @@
 require 'sinatra'
 require 'sinatra/base'
+require 'sinatra/cookies'
 require 'sinatra/flash'
-require 'sass'
 require 'sinatra/activerecord'
+require 'sass'
 require 'warden'
 require 'bcrypt'
-require 'digest/md5'
+require 'digest'
 require 'recaptcha'
 require 'pony'
-require "base64"
 # unless ENV['APP_ENV'] == "production"
 #   require 'pry'
 # end
 
 # modular Sinatra app inherit from Sinatra::Base
 class MyApp < Sinatra::Base
-  # session support for your app
-  use Rack::Session::Pool
-  # flash messages are not integrated, yet
-  # but loaded just in case someone finds the time
+
+  use Rack::Session::Cookie
   register Sinatra::Flash
   register Sinatra::ActiveRecordExtension
 
@@ -29,6 +27,7 @@ class MyApp < Sinatra::Base
   set :public_folder, File.dirname(__FILE__) + '/public'
   # set "/views/layout.erb" as the standard/global template wrapper (yield)
   set :erb, format: :html5
+
 
 end
 

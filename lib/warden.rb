@@ -9,9 +9,10 @@ class MyApp < Sinatra::Base
         config.serialize_from_session { |id| User.find(id) }
 
         config.scope_defaults :default,
+                              store: true,
                               # "strategies" is an array of named methods with which to
                               # attempt authentication. We have to define this later.
-                              strategies: [:password],
+                              strategies: [:password,:token],
                               # The action is a route to send the user to when
                               # warden.authenticate! returns a false answer. We'll show
                               # this route below.
@@ -41,9 +42,30 @@ class MyApp < Sinatra::Base
             if user.nil?
                 throw(:warden, message: 'The username you entered does not exist.')
             elsif user.authenticate(params['user']['password'])
+                if params['user']['rememberme'] == "on"
+                  token = user.create_token
+                  series_identifier = user.create_series_identifier
+                  user.save_series_identifier(series_identifier)
+                  user.save_token(token)
+                end
                 success!(user)
             else
                 throw(:warden, message: 'The username and password combination ')
+            end
+        end
+    end
+
+    Warden::Strategies.add(:token) do
+        def authenticate!
+            user = User.find_by(username: request.cookies['username'])
+            if user.nil?
+                throw(:warden, message: 'The username does not exist.')
+            elsif user.token_authenticate(request.cookies['token'],request.cookies['series_identifier'])
+                success!(user)
+                token = user.create_token
+                user.save_token(token)
+            else
+                throw(:warden, message: 'Token has problem.')
             end
         end
     end
@@ -64,34 +86,43 @@ class MyApp < Sinatra::Base
     end
 
     def user_already_logged
-      user = User.find_by(session_hashed: request.cookies['user'].to_s)
-      if !request.cookies['user'].nil? && request.cookies['user'].to_s != '' && Base64.decode64(user.session_hashed) == Base64.decode64(request.cookies['user'].to_s) && user
-          redirect "/dashboard/#{Base64.decode64(request.cookies['user'])}"
-      end
-    end
-
-    def assign_session_hashed
-      userid = Base64.encode64(current_user.id.to_s)
-      response.set_cookie 'user', userid
-      user = User.find_by(username:current_user.username)
-      user.assign_attributes(
-          session_hashed: userid
-      )
-      user.save
+        unless !warden_handler.authenticated?
+          flash[:success] = "Welcome back #{current_user.username} !"
+          redirect "/dashboard/#{current_user.id}"
+        end
+        unless request.cookies['token'].nil? and request.cookies['username'].nil?
+          warden_handler.authenticate!(:token)
+          if session[:return_to].nil?
+              flash[:success] = "Welcome back #{current_user.username} !"
+              response.set_cookie('token', { :value => current_user.session_hashed, :path => request.path, :expires => Time.now + (60 * 60 * 24 * 30),:httponly => true })
+              redirect "/dashboard/#{current_user.id}"
+          else
+              redirect session[:return_to]
+          end
+        end
     end
 
     post '/' do
-        warden_handler.authenticate!
+        warden_handler.authenticate!(:password)
+        flash[:success] = 'Successfully logged in'
         if session[:return_to].nil?
-            assign_session_hashed
+            if params[:user][:rememberme] == "on"
+              response.set_cookie('token', { :value => current_user.session_hashed, :path => request.path, :expires => Time.now + (60 * 60 * 24 * 30), :httponly => true })
+              response.set_cookie('series_identifier', { :value => current_user.series_identifier, :path => request.path, :expires => Time.now + (60 * 60 * 24 * 30),:httponly => true })
+              response.set_cookie('username', { :value => current_user.username, :path => request.path, :expires => Time.now + (60 * 60 * 24 * 30), :httponly => true })
+            end
             redirect "/dashboard/#{current_user.id}"
+        else
+            redirect session[:return_to]
         end
     end
 
     get '/logout' do
-        response.set_cookie 'user', nil
         env['warden'].raw_session.inspect
         env['warden'].logout
+        response.delete_cookie "token"
+        response.delete_cookie "series_identifier"
+        response.delete_cookie "username"
         flash[:success] = 'Successfully logged out'
         redirect '/'
     end

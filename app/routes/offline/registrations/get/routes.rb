@@ -1,6 +1,7 @@
 class MyApp < Sinatra::Base
   include Recaptcha::ClientHelper
   get '/' do
+    # warden_handler.authenticate!
     user_already_logged
     @timeout = 0
     erb :index, :layout => :'layouts/layout_offline'

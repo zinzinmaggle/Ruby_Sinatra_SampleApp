@@ -7,7 +7,8 @@ class MyApp < Sinatra::Base
         @user.assign_attributes(
             username: params[:user][:username],
             password: BCrypt::Password.create(params[:user][:password]),
-            session_hashed: ''
+            session_hashed: '',
+            series_identifier: ''
         )
         @user.save
         flash[:success] = 'Successfully signed-up !'

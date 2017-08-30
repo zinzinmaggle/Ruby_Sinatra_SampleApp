@@ -79,7 +79,6 @@ class MyApp < Sinatra::Base
         )
         @settings.save
         flash[:success] = 'App settings updated !'
-        @redirect2tab = 1
         redirect "/settings/#{current_user.id}"
       end
     end
