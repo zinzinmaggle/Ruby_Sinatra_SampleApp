@@ -64,26 +64,7 @@
          </div>
      </div>
 </section>
-<section class="mdl-layout__tab-panel" id="fixed-tab-2">
-     <div class="page-content">
-       <ul class="demo-list-control mdl-list">
-        <form action="<%=@user.id%>/setAppNotifications" method="POST">
-           <li class="mdl-list__item">
-               <span class="mdl-list__item-primary-content span-settings-list-item">
-                 <i class="material-icons span-settings-list-item-icon">notifications_active</i>
-                 Let the app send push notifications
-               </span>
-               <span class="mdl-list__item-secondary-action">
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="settings-appnotifications-checkbox">
-                  <input type="checkbox" name="settings[appnotifications]" id="settings-appnotifications-checkbox" class="mdl-switch__input" <%= (!@settings.nil? and @settings.appnotifications == 'on') ? 'checked' : '' %> />
-                </label>
-               </span>
-               <input type="submit" id="settings-appnotifications-submit-hidden">
-           </li>
-         </form>
-        </ul>
-     </div>
-</section>
+
 <script type="text/javascript">
   $(function(){
     $("#settings-profile-submit").click(function(){
@@ -91,9 +72,6 @@
     });
     $("#settings-passwords-submit").click(function(){
           $("#settings-passwords-submit-hidden").click();
-    });
-    $("#settings-appnotifications-checkbox").change(function() {
-      $("#settings-appnotifications-submit-hidden").click();
     });
   });
 </script>
@@ -113,23 +91,8 @@
 {
   width: 90%;
 }
-.demo-list-control {
-  width: 100%;
-}
 
-.span-settings-list-item
-{
-  display: inline;
-}
-.span-settings-list-item-icon
-{
-  font-size: 48px;
-  vertical-align: middle;
-  padding-top: 0px;
-  margin-right: 50px;
-  color:purple;
-}
-#settings-profile-submit-hidden,#settings-passwords-submit-hidden,#settings-appnotifications-submit-hidden
+#settings-profile-submit-hidden,#settings-passwords-submit-hidden
 {
   display: none;
 }

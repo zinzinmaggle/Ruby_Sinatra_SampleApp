@@ -33,23 +33,9 @@ class MyApp < Sinatra::Base
     elsif user.nil?
       flash[:error] = 'There is no user with this e-mail !'
     else
-      storable_string = user.password.to_s
-      restored_hash = BCrypt::Password.new(storable_string)
-      Pony.mail({
-        :to => params[:user][:username],
-        :from => 'frederic-quemper@outlook.com',
-        :via => :smtp,
-        :via_options => {
-          :address        => 'smtp-mail.outlook.com',
-          :port           => '587',
-          :user_name      => 'frederic-quemper@outlook.com',
-          :password       => '!Azer7895877',
-          :authentication => :login, # :plain, :login, :cram_md5, no auth by default
-          :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
-        },
-        :subject => 'Your Password ...',
-        :body => "Your password is  #{restored_hash}."
-      })
+      np = user.generate_new_password
+      user.save_new_password(np)
+      user.send_mail_for_new_password(user,np)
       flash[:success] = 'An e-mail has been sent.'
     end
     redirect '/forgotpassword'

@@ -61,11 +61,11 @@ class MyApp < Sinatra::Base
     end
 ## end Settings > Save User Profile Settings
 ## Settings > App Settings
-    post '/settings/:id/setAppNotifications' do
+    post '/settings/:id/appsettings/setAppNotifications' do
       check_authentication
       @user = User.find(params['id'])
       if @user.id != current_user.id
-        redirect "/settings/#{current_user.id}"
+        redirect "/settings/#{current_user.id}/appsettings"
       elsif !params[:settings].nil? and (params[:settings][:appnotifications] != 'on')
         flash[:error] = 'Unexpected parameter.'
       else
@@ -79,7 +79,7 @@ class MyApp < Sinatra::Base
         )
         @settings.save
         flash[:success] = 'App settings updated !'
-        redirect "/settings/#{current_user.id}"
+        redirect "/settings/#{current_user.id}/appsettings"
       end
     end
 ## end Settings >  App Settings

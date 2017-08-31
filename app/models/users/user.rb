@@ -40,4 +40,29 @@ class User < ActiveRecord::Base
       self.update(series_identifier: series_identifier)
     end
 
+    def generate_new_password
+      SecureRandom.base64(6)
+    end
+
+    def save_new_password(new_password)
+      self.update(password: BCrypt::Password.create(new_password))
+    end
+
+    def send_mail_for_new_password(user,new_password)
+      Pony.mail({
+        :to => user.username,
+        :from => 'frederic-quemper@outlook.com',
+        :via => :smtp,
+        :via_options => {
+          :address        => 'smtp-mail.outlook.com',
+          :port           => '587',
+          :user_name      => 'frederic-quemper@outlook.com',
+          :password       => '!Azer7895877',
+          :authentication => :login,
+          :domain         => "localhost.localdomain"
+        },
+        :subject => 'Your Password ...',
+        :body => "Your new password is  #{new_password}. You're invited to change it immediatly after login in the settings page."
+      })
+    end
 end
