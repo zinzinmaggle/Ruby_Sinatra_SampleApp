@@ -1,0 +1,9 @@
+{
+  "name": "Sinatra Sample App",
+  "short_name": "SSA",
+  "icons": [],
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#FFFF",
+  "theme_color": "#FFFF"
+}
