@@ -1,26 +1,31 @@
-<form method="POST" action="/">
+<form method="POST" action="/" id="login-form">
   <div class="mdl-card__title">
     <h2 class="mdl-card__title-text" ><i class="material-icons material-icons-io" style="margin-right:20px">flight_takeoff</i> Sign-in form </h2>
   </div>
   <div class="mdl-card__supporting-text">
-    <div class="mdl-textfield mdl-js-textfield">
+  
+    <div class="mdl-textfield mdl-js-textfield login-textfield">
       <input class="mdl-textfield__input" type="text" id="usernameField" name="user[username]">
       <label class="mdl-textfield__label" for="usernameField">E-mail address</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
+    </div><br/>
+    <div class="mdl-textfield mdl-js-textfield login-textfield">
       <input class="mdl-textfield__input" type="password" id="passwordField" name="user[password]">
       <label class="mdl-textfield__label" for="passwordField">Password</label>
-    </div>
-    <div class="mdl-textfield mdl-js-textfield">
-      <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rememberMeField">
-        <input type="checkbox" name="user[rememberme]" id="rememberMeField" class="mdl-switch__input">
-        <span class="mdl-switch__label">Remember me</span>
-      </label>
+    </div><br/><br/>
+
+    <div id="container-bottom-login-form">
+      <div class="mdl-textfield mdl-js-textfield">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="rememberMeField">
+          <input type="checkbox" name="user[rememberme]" id="rememberMeField" class="mdl-switch__input">
+          <span class="mdl-switch__label">Remember me</span>
+        </label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield" align="center">
+        <a href="/forgotpassword">Forgot your password ?</a>
+      </div>
     </div>
 
-    <div class="mdl-textfield mdl-js-textfield" align="center">
-      <a href="/forgotpassword">Forgot your password ?</a>
-    </div>
   </div><br/>
   <div class="mdl-card__actions mdl-card--border">
     <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit" value="Sign-in">
@@ -29,3 +34,4 @@
     </a>
   </div>
 </form>
+

@@ -56,4 +56,54 @@ table > thead > tr > th:not(.no-left-aligned-th) {
 .mdl-layout__tab-bar {
   z-index: -10 !important; }
 
+#login-form,
+#signup-form,
+#forgotpassword-form {
+  margin-bottom: 0 !important;
+  padding: 15px 15px 5px 15px; }
+
+.login-textfield,
+.signup-textfield,
+.forgotpassword-textfield {
+  width: 100%; }
+
+#container-bottom-login-form {
+  width: 100%;
+  text-align: center; }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  #login-form,
+  #signup-form,
+  #forgotpassword-form {
+    padding: 10px !important; } }
+#mydiv {
+  left: 25%;
+  width: 50%;
+  height: auto;
+  top: 25%;
+  position: absolute; }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  #mydiv {
+    left: 2.5%;
+    width: 95%;
+    top: 10%; } }
+#layout-header-sidemenu-mobile {
+  background: url("https://graphicflip.com/wp-content/uploads/2016/02/5-backgrounds.jpg");
+  height: 85px;
+  padding: 16px; }
+
+#chip-header-sidemenu-mobile {
+  background: none;
+  width: 0; }
+
+#chip-image-header-sidemenu-mobile {
+  width: 64px;
+  height: 64px; }
+
+#chip-text-header-sidemenu-mobile {
+  color: whitesmoke;
+  font-size: 14px;
+  font-weight: 300; }
+
 /*# sourceMappingURL=utils.css.map */
