@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div id="main">
+  <div id="main-layout-online">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header  mdl-layout--fixed-tabs">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row" id="header-row-layout-online">
@@ -22,7 +22,7 @@
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <span class="mdl-chip mdl-chip--contact">
-                <a href="https://fr.gravatar.com/" target="_blank" style="color:grey;">
+                <a href="https://fr.gravatar.com/" target="_blank" id="layout-online-gravatar-link">
                   <img class="mdl-chip__contact" src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(@user.username) %>"></img>
                   <span class="mdl-chip__text">Logged as <strong><%=@user.username%></strong></span>
                 </a>

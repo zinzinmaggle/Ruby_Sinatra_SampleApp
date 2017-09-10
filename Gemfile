@@ -7,6 +7,7 @@ gem 'rake'
 gem 'require_all'
 gem 'sqlite3'
 gem 'sass'
+gem 'material_design_lite-sass'
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 gem 'warden'
