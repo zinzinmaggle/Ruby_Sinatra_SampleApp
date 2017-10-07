@@ -23,7 +23,7 @@
   <div id="main-layout-offline">
   <div class="mdl-grid" id="mdl-grid-layout-offline">
     <div class="mdl-cell mdl-cell--middle	 mdl-cell--4-col mdl-cell--8-col-tablet"></div>
-    <div class="mdl-cell mdl-cell--middle	 mdl-cell--4-col mdl-cell--8-col-tablet  mdl-cell--4-col-phone"><%= yield %></div>
+    <div class="mdl-cell mdl-cell--middle	 mdl-cell--4-col mdl-cell--8-col-tablet  mdl-cell--4-col-phone" id="layout-offline-yield-container"><%= yield %></div>
     <div class="mdl-cell mdl-cell--middle	 mdl-cell--4-col mdl-cell--8-col-tablet"></div>
   </div>
   </div>
@@ -33,13 +33,13 @@
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
   <script type="text/javascript">
-  $(function(){
+  $(document).ready(function(){
     var notification = document.querySelector('#snackbar-offline');
     var data = {
     message: '<%= flash[:success]  %> <%= flash[:error] %>',
     actionHandler: function(event) {},
     actionText: 'Close',
-    timeout: 3000
+    timeout: 5000
     };
     <% if  flash[:success] or flash[:error] %>
       setTimeout(function(){   notification.MaterialSnackbar.showSnackbar(data); }, <%= @timeout %>);

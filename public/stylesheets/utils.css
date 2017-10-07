@@ -11116,8 +11116,36 @@ table > thead > tr > th:not(.no-left-aligned-th) {
   #signup-form,
   #forgotpassword-form {
     padding: 10px !important; } }
+@media screen and (max-width: 840px) {
+  #layout-offline-yield-container > #signup-form > .mdl-card__title {
+    color: white;
+    text-align: center; }
+
+  #layout-offline-yield-container > #signup-form > .mdl-card__supporting-text > .signup-textfield > input {
+    color: white; }
+
+  #layout-offline-yield-container > #signup-form > .mdl-card__supporting-text > .mdl-textfield.mdl-js-textfield > .mdl-textfield__label {
+    color: rgba(255, 255, 255, 0.8); }
+
+  #layout-offline-yield-container > #signup-form > .mdl-card__supporting-text > #container-bottom-signup-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect > span {
+    color: white; }
+
+  #layout-offline-yield-container > #signup-form > .mdl-card__supporting-text > #container-bottom-signup-form > .mdl-textfield.mdl-js-textfield > a {
+    color: white; }
+
+  #main-layout-offline {
+    background: #6a00ff; }
+
+  #layout-offline-yield-container > #signup-form > .mdl-card__supporting-text > #container-bottom-signup-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect.is-upgraded.is-checked > .mdl-switch__track {
+    background: rgba(255, 255, 255, 0.5); }
+
+  #layout-offline-yield-container > #signup-form > .mdl-card__supporting-text > #container-bottom-signup-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect.is-upgraded.is-checked > .mdl-switch__thumb {
+    background: white; }
+
+  #container-bottom-signup-form > .mdl-textfield.mdl-js-textfield.signup-textfield {
+    text-align: center; } }
 #main-layout-offline {
-  background: #FAFAFA;
+  background: #1ba1e2;
   margin: 0 auto;
   padding: 0;
   overflow-y: auto; }
@@ -11126,6 +11154,49 @@ table > thead > tr > th:not(.no-left-aligned-th) {
   height: 100vh;
   padding: 0; }
 
+@media screen and (min-width: 840px) {
+  #layout-offline-yield-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    min-height: 200px;
+    overflow: hidden;
+    width: calc(33.3333333333% - 16px) !important;
+    z-index: 1;
+    position: relative;
+    background: white;
+    border-radius: 2px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); } }
+@media screen and (max-width: 840px) {
+  #layout-offline-yield-container > #login-form > .mdl-card__title {
+    color: white;
+    text-align: center; }
+
+  #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > .login-textfield > input {
+    color: white; }
+
+  #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > .mdl-textfield.mdl-js-textfield > .mdl-textfield__label {
+    color: rgba(255, 255, 255, 0.8); }
+
+  #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect > span {
+    color: white; }
+
+  #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > a {
+    color: white; }
+
+  .mdl-button-registrations-backtologin {
+    color: white !important; }
+
+  #main-layout-offline {
+    background: #6a00ff; }
+
+  #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect.is-upgraded.is-checked > .mdl-switch__track {
+    background: rgba(255, 255, 255, 0.5); }
+
+  #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect.is-upgraded.is-checked > .mdl-switch__thumb {
+    background: white; } }
 #main-layout-online {
   height: 100%;
   background: whitesmoke;
@@ -11137,7 +11208,8 @@ table > thead > tr > th:not(.no-left-aligned-th) {
 #layout-header-sidemenu-mobile {
   background: url("https://graphicflip.com/wp-content/uploads/2016/02/5-backgrounds.jpg");
   height: 85px;
-  padding: 16px; }
+  padding: 16px;
+  background-size: cover; }
 
 #chip-header-sidemenu-mobile {
   background: none;
@@ -11165,6 +11237,18 @@ table > thead > tr > th:not(.no-left-aligned-th) {
 
 #sample3 + label {
   cursor: pointer; }
+
+#data-tables-more-buttton {
+  float: right; }
+
+#data-tables-more-button-icon {
+  padding-top: 0; }
+
+#data-tables-download-button {
+  float: right !important; }
+
+#data-tables-save-button {
+  float: right !important; }
 
 .mdl-textfield-container {
   width: 90%; }

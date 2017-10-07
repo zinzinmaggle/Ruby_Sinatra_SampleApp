@@ -21,12 +21,6 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <span class="mdl-chip mdl-chip--contact">
-                <a href="https://fr.gravatar.com/" target="_blank" id="layout-online-gravatar-link">
-                  <img class="mdl-chip__contact" src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(@user.username) %>"></img>
-                  <span class="mdl-chip__text">Logged as <strong><%=@user.username%></strong></span>
-                </a>
-            </span>
             <a class="mdl-navigation__link" href="" ><i class="material-icons material-icons-io" id="large-screen-chat-none-icon">chat_bubble_outline</i><div class="mdl-tooltip" for="large-screen-chat-none-icon">Conversations (0)</div></a>
             <a class="mdl-navigation__link" href=""><i class="material-icons material-icons-io"  id="large-screen-notifications-none-icon">notifications_none</i><div class="mdl-tooltip" for="large-screen-notifications-none-icon">Notifications (0)</div></a>
             <a class="mdl-navigation__link" href="/settings/<%=@user.id%>"><i class="material-icons material-icons-io"  id="large-screen-settings-icon">settings</i><div class="mdl-tooltip" for="large-screen-settings-icon">Settings</div></a>
@@ -46,7 +40,7 @@
         <% end %>
       </header>
       <div class="mdl-layout__drawer">
-        <div class="mdl-layout--small-screen-only" id="layout-header-sidemenu-mobile">
+        <div id="layout-header-sidemenu-mobile">
           <span class="mdl-chip mdl-chip--contact" id="chip-header-sidemenu-mobile">
               <a href="https://fr.gravatar.com/" target="_blank">
                 <img class="mdl-chip__contact" id="chip-image-header-sidemenu-mobile" src="https://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(@user.username) %>"></img><br/>
@@ -76,18 +70,18 @@
     </div>
     <button type="button" class="mdl-snackbar__action"></button>
   </div>
-  <script type="text/javascript">
-  $(function(){
-    var notification = document.querySelector('#snackbar-online');
-    var data = {
-    message: '<%= flash[:success]  %> <%= flash[:error] %>',
-    actionHandler: function(event) {},
-    actionText: 'Close',
-    timeout: 10000
-    };
-    <% if  flash[:success] or flash[:error] %>
-      notification.MaterialSnackbar.showSnackbar(data);
-    <% end %>
-  });
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var notification = document.querySelector('#snackbar-online');
+      var data = {
+      message: '<%= flash[:success]  %> <%= flash[:error] %>',
+      actionHandler: function(event) {},
+      actionText: 'Close',
+      timeout: 5000
+      };
+      <% if  flash[:success] or flash[:error] %>
+        setTimeout(function(){   notification.MaterialSnackbar.showSnackbar(data); }, <%= @timeout %>);
+      <% end %>
+    });
   </script>
 </body>

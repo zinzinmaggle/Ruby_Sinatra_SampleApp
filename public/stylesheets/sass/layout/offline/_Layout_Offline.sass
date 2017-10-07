@@ -3,7 +3,7 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
 #main-layout-offline
-    background: #FAFAFA
+    background: #1ba1e2
     margin: 0 auto
     padding: 0
     overflow-y: auto
@@ -11,3 +11,42 @@
 #mdl-grid-layout-offline
     height: 100vh
     padding : 0
+
+@media screen and (min-width :840px)
+    #layout-offline-yield-container
+        display: flex 
+        flex-direction: column 
+        font-size: 16px 
+        font-weight: 400 
+        min-height: 200px 
+        overflow: hidden 
+        width: calc(33.3333333333% - 16px) !important 
+        z-index: 1 
+        position: relative
+        background: rgb(255,255,255) 
+        border-radius: 2px 
+        box-sizing: border-box 
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
+
+@media screen and (max-width :840px)
+    #layout-offline-yield-container > #login-form > .mdl-card__title
+        color:  white
+        text-align: center
+    #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > .login-textfield > input
+        color:  white
+    #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > .mdl-textfield.mdl-js-textfield > .mdl-textfield__label
+        color:  rgba(255,255,255,0.8)
+    #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect > span
+        color:  white
+    #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > a
+        color:  white
+    .mdl-button-registrations-backtologin
+        color: white !important
+    #main-layout-offline
+        background: #6a00ff
+    #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect.is-upgraded.is-checked > .mdl-switch__track
+        background: rgba(255,255,255, 0.5)
+    #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect.is-upgraded.is-checked > .mdl-switch__thumb
+        background: rgb(255,255,255)
+
+        
