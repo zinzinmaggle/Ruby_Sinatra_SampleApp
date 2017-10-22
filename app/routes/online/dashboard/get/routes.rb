@@ -8,7 +8,7 @@ class MyApp < Sinatra::Base
       if @user.id != current_user.id
         redirect "/dashboard/#{current_user.id}"
       end
-      erb :"users/menu/dashboard/dashboard",:layout => :'layouts/layout_online'
+      erb :"users/dashboard/dashboard",:layout => :'layouts/layout_online'
   end
 ## end Dashboard main route
 end

@@ -11062,11 +11062,15 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   font-family: "Roboto";
   src: local(Roboto Bold), url(font-path("roboto/Roboto-Bold.woff2")) format("woff2"), url(font-path("roboto/Roboto-Bold.woff")) format("woff"), url(font-path("roboto/Roboto-Bold.ttf")) format("truetype");
   font-weight: 700; }
+.mdl-layout__tab-bar {
+  z-index: -10 !important; }
+
 .material-icons-io {
   padding-top: 0 !important; }
 
 .icons-side-menu {
-  float: right; }
+  float: left;
+  margin-right: 20px; }
 
 .page-content {
   padding: 25px; }
@@ -11086,9 +11090,6 @@ table > thead > tr > th:not(.no-left-aligned-th) {
 
 #header-row-layout-online {
   padding-right: 5px; }
-
-.mdl-layout__tab-bar {
-  z-index: -10 !important; }
 
 #login-form,
 #signup-form,
@@ -11145,7 +11146,7 @@ table > thead > tr > th:not(.no-left-aligned-th) {
   #container-bottom-signup-form > .mdl-textfield.mdl-js-textfield.signup-textfield {
     text-align: center; } }
 #main-layout-offline {
-  background: #1ba1e2;
+  background: url("https://hdqwalls.com/wallpapers/material-design-4k.jpg");
   margin: 0 auto;
   padding: 0;
   overflow-y: auto; }
@@ -11190,7 +11191,7 @@ table > thead > tr > th:not(.no-left-aligned-th) {
     color: white !important; }
 
   #main-layout-offline {
-    background: #6a00ff; }
+    background: #d80073; }
 
   #layout-offline-yield-container > #login-form > .mdl-card__supporting-text > #container-bottom-login-form > .mdl-textfield.mdl-js-textfield > .mdl-switch.mdl-js-switch.mdl-js-ripple-effect.is-upgraded.is-checked > .mdl-switch__track {
     background: rgba(255, 255, 255, 0.5); }
@@ -11206,8 +11207,8 @@ table > thead > tr > th:not(.no-left-aligned-th) {
   overflow-y: auto; }
 
 #layout-header-sidemenu-mobile {
-  background: url("https://graphicflip.com/wp-content/uploads/2016/02/5-backgrounds.jpg");
-  height: 85px;
+  background: url("https://boygeniusreport.files.wordpress.com/2014/12/ultimate-material-lollipop-collection-66.png?w=782");
+  height: 135px;
   padding: 16px;
   background-size: cover; }
 
@@ -11217,7 +11218,8 @@ table > thead > tr > th:not(.no-left-aligned-th) {
 
 #chip-image-header-sidemenu-mobile {
   width: 64px;
-  height: 64px; }
+  height: 64px;
+  padding-top: 25px; }
 
 #chip-text-header-sidemenu-mobile {
   color: whitesmoke;
@@ -11226,6 +11228,9 @@ table > thead > tr > th:not(.no-left-aligned-th) {
 
 #layout-online-gravatar-link {
   color: grey; }
+
+#mdl-layout-online-menu {
+  background: #647687; }
 
 #sample3 {
   width: 0.1px;
@@ -11249,6 +11254,36 @@ table > thead > tr > th:not(.no-left-aligned-th) {
 
 #data-tables-save-button {
   float: right !important; }
+
+.menu {
+  padding-top: 0;
+  margin-top: 0; }
+
+.menu > strong {
+  color: #60a917; }
+
+.menu > a > li {
+  border-bottom: lightgrey solid 1px;
+  padding-left: 0;
+  padding-top: 0; }
+
+.menu > a {
+  text-decoration: none; }
+
+.menu-title {
+  display: block !important;
+  white-space: pre-line; }
+
+.menu-subtitle {
+  color: #647687;
+  font-weight: 100;
+  font-size: 14px; }
+
+.textfield-menu-container {
+  width: 100% !important; }
+
+.textfield-menu-container > input {
+  padding-bottom: 15px; }
 
 .mdl-textfield-container {
   width: 90%; }

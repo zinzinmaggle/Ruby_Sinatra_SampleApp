@@ -1,21 +1,21 @@
 class MyApp < Sinatra::Base
 ## Settings > Save User Profile Settings
-    post '/settings/:id/updateProfile' do
+    post '/settings/:id/userProfile' do
       check_authentication
       @user = User.find(params['id'])
       if @user.id != current_user.id
         redirect "/settings/#{current_user.id}"
       else
-        user = User.find_by(username: params['user']['usernameOrEmail']).nil?
-        if params[:profile][:name] == '' and params[:profile][:phone] == '' and params[:profile][:ZIPcode] == '' and params[:profile][:city] == '' and params[:user][:usernameOrEmail]  == ''
+        user = User.find_by(username: params['user']['userEmail']).nil?
+        if params[:profile][:name] == '' and params[:profile][:userPhone] == '' and params[:profile][:ZIPcode] == '' and params[:profile][:userCity] == '' and params[:user][:userEmail]  == ''
           flash[:error] = 'Nothing to update.'
-        elsif /[0-9]*/.match(params[:profile][:phone]).nil? and params[:profile][:phone] != ''
+        elsif /[0-9]*/.match(params[:profile][:userPhone]).nil? and params[:profile][:userPhone] != ''
           flash[:error] = 'Expected a valid phone number.'
         elsif /^\d{5}(?:[-\s]\d{4})?$/.match(params[:profile][:ZIPcode]).nil? and params[:profile][:ZIPcode] != ''
           flash[:error] = 'Expected a valid ZIP-code.'
         elsif !user && params['user']['usernameOrEmail'] != ''
           flash[:error] = 'This e-mail is already taken !'
-        elsif /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.match(params[:user][:usernameOrEmail]).nil? and params[:user][:usernameOrEmail] != ''
+        elsif /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.match(params[:user][:userEmail]).nil? and params[:user][:userEmail] != ''
           flash[:error] = 'Expected a valid e-mail address.'
         else
           @profile = UserProfile.find_by_userid(current_user.id)
@@ -24,13 +24,13 @@ class MyApp < Sinatra::Base
             end
             @profile.assign_attributes(
               name: (params[:profile][:name] != '') ? params[:profile][:name]  :  @profile.name || '',
-              phone:  (params[:profile][:phone] != '') ? params[:profile][:phone] :   @profile.phone || '',
+              phone:  (params[:profile][:userPhone] != '') ? params[:profile][:userPhone] :   @profile.phone || '',
               ZIPcode: (params[:profile][:ZIPcode] != '') ? params[:profile][:ZIPcode] :   @profile.ZIPcode || '',
-              city: (params[:profile][:city] != '') ? params[:profile][:city] :   @profile.city || '',
+              city: (params[:profile][:userCity] != '') ? params[:profile][:userCity] :   @profile.city || '',
               userid: current_user.id
             )
             @user.assign_attributes(
-                username: (params[:user][:usernameOrEmail] != '') ? params[:user][:usernameOrEmail] : @user.username
+                username: (params[:user][:userEmail] != '') ? params[:user][:userEmail] : @user.username
             )
             @profile.save
             @user.save
@@ -39,7 +39,7 @@ class MyApp < Sinatra::Base
         redirect "/settings/#{current_user.id}"
       end
     end
-    post '/settings/:id/updatePassword' do
+    post '/settings/:id/managePassword' do
       check_authentication
       @user = User.find(params['id'])
       if @user.id != current_user.id
@@ -61,7 +61,7 @@ class MyApp < Sinatra::Base
     end
 ## end Settings > Save User Profile Settings
 ## Settings > App Settings
-    post '/settings/:id/appsettings/setAppNotifications' do
+    post '/settings/:id/notifications' do
       check_authentication
       @user = User.find(params['id'])
       if @user.id != current_user.id

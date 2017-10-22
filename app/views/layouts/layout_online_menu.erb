@@ -1,0 +1,53 @@
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="<%= url('./stylesheets/utils.css') %>">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type="text/javascript" src="<%= url('./scripts/libraries/jquery-3.2.1.min.js') %>"></script>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<title>Sinatra Sample App</title>
+<meta name="viewport" content="width=device-width">
+
+</head>
+
+<body>
+<div id="main-layout-online-menu">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header" id="mdl-layout-online-menu"> 
+        <a href="<%= @previous_link %>"><div class="mdl-layout__drawer-button"><i class="material-icons">arrow_back</i></div></a>
+            <div class="mdl-layout__header-row" id="header-row-layout-online-menu">
+                <!-- Title -->
+                <span class="mdl-layout-title"><%= @controller_name %></span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <% if @saveMode %>
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link mdl-layout-title" href="#" id="save-button">Save</a>
+                    </nav>
+                <% end %>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content"> <%= yield %> </div>
+        </main>
+    </div>
+</div>
+<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar" id="snackbar-online-menu">
+<div class="mdl-snackbar__text">
+</div>
+<button type="button" class="mdl-snackbar__action"></button>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+  var notification = document.querySelector('#snackbar-online-menu');
+  var data = {
+  message: '<%= flash[:success]  %> <%= flash[:error] %>',
+  actionHandler: function(event) {},
+  actionText: 'Close',
+  timeout: 5000
+  };
+  <% if  flash[:success] or flash[:error] %>
+    setTimeout(function(){   notification.MaterialSnackbar.showSnackbar(data); }, <%= @timeout %>);
+  <% end %>
+});
+</script>
+</body>

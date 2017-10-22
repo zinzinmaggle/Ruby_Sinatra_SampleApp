@@ -1,0 +1,38 @@
+<ul class="mdl-list menu">
+    
+        <strong>General</strong>
+        
+        <a href="/settings/<%=@user.id%>/notifications" >
+            <li class="mdl-list__item mdl-js-ripple-effect">
+                <span class="mdl-list__item-primary-content menu-title">
+                    Notifications
+                    <span class="menu-subtitle">Manage notifications settings</span>
+                </span>     
+            </li>
+        </a>
+        
+        <br/> <br/>
+    
+        <strong>User account</strong>
+        
+        <a href="/settings/<%=@user.id%>/userProfile" >
+            <li class="mdl-list__item mdl-js-ripple-effect">
+                <span class="mdl-list__item-primary-content menu-title">
+                    Profile
+                    <span class="menu-subtitle">Manage your user profile</span>
+                </span>     
+            </li>
+        </a>
+        
+        <a href="/settings/<%=@user.id%>/managePassword" >
+            <li class="mdl-list__item mdl-js-ripple-effect">
+                <span class="mdl-list__item-primary-content menu-title">
+                    Manage Password
+                    <span class="menu-subtitle">Manage your password</span>
+                </span>     
+            </li>
+        </a>
+        
+        <br/> <br/>
+    
+</ul>

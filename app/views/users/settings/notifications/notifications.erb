@@ -1,0 +1,24 @@
+<form action="settings/<%=@user.id%>/notifications" method="POST">
+<ul class="mdl-list menu">
+    <strong>General</strong>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content menu-title">
+                Enable notifications
+                <span class="menu-subtitle">Let the app send push notifications</span>
+            </span>
+            <span class="mdl-list__item-secondary-action">
+              <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="settings-appnotifications-checkbox">
+                <input type="checkbox" name="settings[appnotifications]" id="settings-appnotifications-checkbox" class="mdl-checkbox__input" <%= (!@settings.nil? and @settings.appnotifications == 'on') ? 'checked' : '' %> />
+              </label>
+            </span>
+            <input type="submit" id="settings-appnotifications-submit-hidden">     
+    <br/> <br/>
+</ul>
+</form>
+<script type="text/javascript">
+$(function(){
+  $("#settings-appnotifications-checkbox").change(function() {
+    $("#settings-appnotifications-submit-hidden").click();
+  });
+});
+</script>
