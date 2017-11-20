@@ -7,36 +7,36 @@ class Menu
 
     def menu_settings
         return [
-            {:categoryName => "General", :multipleInputs => false, :category => [{ :formType => "",:readMode => true, :title => "Notifications", :subtitle => "Manage notifications settings", :link => "/settings/"+$user_id.to_s+"/notifications"}]},
-            {:categoryName => "User account", :multipleInputs => false,:category => [{ :formType => "",:readMode => true, :title => "Profile", :subtitle => "Manage your user profile" , :link => "/settings/"+$user_id.to_s+"/userProfile"},{:form => false, :formType => "",:readMode => true, :title => "Manage Password", :subtitle => "Manage your password", :link => "/settings/"+$user_id.to_s+"/managePassword"}]},
+            {:categoryName => "General", :multipleInputs => false, :category => [{ :formType => "",:readMode => true, :title => "Notifications", :subtitle => "Manage notifications settings", :link => "/settings/#{$user_id}/notifications"}]},
+            {:categoryName => "User account", :multipleInputs => false,:category => [{ :formType => "",:readMode => true, :title => "Profile", :subtitle => "Manage your user profile" , :link => "/settings/#{$user_id}/userprofile"},{:form => false, :formType => "",:readMode => true, :title => "Manage Password", :subtitle => "Manage your password", :link => "/settings/#{$user_id}/managepassword"}]},
         ]
     end
 
     def menu_notifications
         return [
-            {:categoryName => "General", :multipleInputs => false, :category => [{ :formType => "checkbox",:readMode => true, :title => "Enable Notifications", :subtitle => "Allow the application to send push notifications", :link => "/settings/"+$user_id.to_s+"/notifications/edit"}]},
+            {:categoryName => "General", :formAction => "settings/#{$user_id}/notifications/save", :multipleInputs => false, :category => [{ :formType => "checkbox",:readMode => true, :title => "Enable Notifications", :subtitle => "Allow the application to send push notifications", :link => "/settings/#{$user_id}/notifications/edit"}]},
         ]
     end
 
     def menu_user_profile
         return [
             {:categoryName => "Account", :multipleInputs => false, :category => [
-                {:formType => "textfield", :readMode => true, :title => "E-mail address", :subtitle => $user.username, :link => "/settings/"+$user_id.to_s+"/userProfile/emailaddress/edit"}
+                {:formType => "textfield", :readMode => true, :title => "E-mail address", :subtitle => $user.username, :link => "/settings/#{$user_id}/userprofile/emailaddress/edit"}
             ]},
             {:categoryName => "Personnal", :multipleInputs => false, :category => [
-                {:formType => "textfield", :readMode => true, :title => "First Name", :subtitle => "frederic-quemper@gmail.com", :link => "/settings/"+$user_id.to_s+"/userProfile/firstname/edit"},
-                {:formType => "textfield",:readMode => true, :title => "Last Name", :subtitle => "frederic-quemper@gmail.com", :link => "/settings/"+$user_id.to_s+"/userProfile/lastname/edit"},
-                {:formType => "textfield",:readMode => true, :title => "Phone", :subtitle => $profile.phone, :link => "/settings/"+$user_id.to_s+"/userProfile/phone/edit"},
-                {:formType => "textfield",:readMode => true, :title => "Street Address", :subtitle => "frederic-quemper@gmail.com", :link => "/settings/"+$user_id.to_s+"/userProfile/address/edit"},
-                {:formType => "textfield",:readMode => true, :title => "Zip-Code", :subtitle => $profile.ZIPcode, :link => "/settings/"+$user_id.to_s+"/userProfile/zipcode/edit"},
-                {:formType => "textfield",:readMode => true, :title => "City", :subtitle => $profile.city, :link => "/settings/"+$user_id.to_s+"/userProfile/city/edit"}
+                {:formType => "textfield", :readMode => true, :title => "First Name", :subtitle => "frederic-quemper@gmail.com", :link => "/settings/#{$user_id}/userprofile/firstname/edit"},
+                {:formType => "textfield",:readMode => true, :title => "Last Name", :subtitle => "frederic-quemper@gmail.com", :link => "/settings/#{$user_id}/userprofile/lastname/edit"},
+                {:formType => "textfield",:readMode => true, :title => "Phone", :subtitle => $profile.phone, :link => "/settings/#{$user_id}/userprofile/phone/edit"},
+                {:formType => "textfield",:readMode => true, :title => "Street Address", :subtitle => "frederic-quemper@gmail.com", :link => "/settings/#{$user_id}/userprofile/streetaddress/edit"},
+                {:formType => "textfield",:readMode => true, :title => "Zip-Code", :subtitle => $profile.ZIPcode, :link => "/settings/#{$user_id}/userprofile/zipcode/edit"},
+                {:formType => "textfield",:readMode => true, :title => "City", :subtitle => $profile.city, :link => "/settings/#{$user_id}/userprofile/city/edit"}
             ]},
         ]
     end
 
     def menu_manage_password
         return [
-            {:categoryName => "", :multipleInputs => true, :category => [
+            {:categoryName => "", :multipleInputs => true, :formType => "textfield", :formAction => "settings/#{$user_id}/managepassword/save", :category => [
                 { :form => [
                     {:inputName => "user[newPassword]", :inputLabel => "Enter your new password", :inputError => "", :inputId => "newPassword", :inputPattern => "", :inputType => "password"}
                 ],
@@ -44,7 +44,7 @@ class Menu
                 { :form => [
                     {:inputName => "user[reNewPassword]", :inputLabel => "Re-type your new password", :inputError => "", :inputId => "reNewPassword", :inputPattern => "", :inputType => "password"}
                 ],
-                 :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                 :readMode => false, :title => "", :subtitle => "", :link => ""}
             ]},
         ]
     end
@@ -57,7 +57,7 @@ class Menu
                         { :form => [
                             {:inputName => "user[email]", :inputLabel => "Update your e-mail address", :inputError => "Expected a valid e-mail address", :inputId => "userEmail", :inputPattern => "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$", :inputType => "email"}
                         ],
-                        :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                        :formType => "textfield", :formAction => "settings/#{$user_id}/userprofile/#{fromAction}/save",:readMode => false, :title => "", :subtitle => "", :link => ""}
                     ]}
                 ]
             when "firstname"
@@ -66,7 +66,7 @@ class Menu
                         { :form => [
                             {:inputName => "user[firstname]", :inputLabel => "Update your first name", :inputError => "Expected a valid first name", :inputId => "userFirstName", :inputPattern => "", :inputType => "text"}
                         ],
-                        :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                        :formType => "textfield", :formAction => "settings/#{$user_id}/userprofile/#{fromAction}/save", :readMode => false, :title => "", :subtitle => "", :link => ""}
                     ]}
                 ]
             when "lastname"
@@ -75,7 +75,7 @@ class Menu
                         { :form => [
                             {:inputName => "user[lastname]", :inputLabel => "Update your last name", :inputError => "Expected a valid last name", :inputId => "userLastName", :inputPattern => "", :inputType => "text"}
                         ],
-                        :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                        :formType => "textfield", :formAction => "settings/#{$user_id}/userprofile/#{fromAction}/save", :readMode => false, :title => "", :subtitle => "", :link => ""}
                     ]}
                 ]
             when "phone"
@@ -84,7 +84,7 @@ class Menu
                         { :form => [
                             {:inputName => "user[phone]", :inputLabel => "Update your phone number", :inputError => "Expected a valid phone number", :inputId => "userPhone", :inputPattern => "[0-9]*", :inputType => "phone"}
                         ],
-                        :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                        :formType => "textfield", :formAction => "settings/#{$user_id}/userprofile/#{fromAction}/save", :readMode => false, :title => "", :subtitle => "", :link => ""}
                     ]}
                 ]
             when "streetaddress"
@@ -93,7 +93,7 @@ class Menu
                         { :form => [
                             {:inputName => "user[streetaddress]", :inputLabel => "Update your street address", :inputError => "Expected a valid street address", :inputId => "userStreetAddress", :inputPattern => "", :inputType => "text"}
                         ],
-                        :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                        :formType => "textfield", :formAction => "settings/#{$user_id}/userprofile/#{fromAction}/save", :readMode => false, :title => "", :subtitle => "", :link => ""}
                     ]}
                 ]
             when "zipcode"
@@ -102,7 +102,7 @@ class Menu
                         { :form => [
                             {:inputName => "user[zipcode]", :inputLabel => "Update your zip-code", :inputError => "Expected a valid zip-code", :inputId => "userZipCode", :inputPattern => "^\d{5}(?:[-\s]\d{4})?$", :inputType => "text"}
                         ],
-                        :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                        :formType => "textfield", :formAction => "settings/#{$user_id}/userprofile/#{fromAction}/save", :readMode => false, :title => "", :subtitle => "", :link => ""}
                     ]}
                 ]
             when "city"
@@ -111,7 +111,7 @@ class Menu
                         { :form => [
                             {:inputName => "user[city]", :inputLabel => "Update your city", :inputError => "Expected a valid city", :inputId => "userCity", :inputPattern => "", :inputType => "text"}
                         ],
-                        :formType => "textfield",:readMode => false, :title => "", :subtitle => "", :link => ""}
+                        :formType => "textfield", :formAction => "settings/#{$user_id}/userprofile/#{fromAction}/save", :readMode => false, :title => "", :subtitle => "", :link => ""}
                     ]}
                 ]
         end

@@ -31,7 +31,7 @@ class MyApp < Sinatra::Base
   end
 ## end Settings > Show notifications
 ## Settings > Show user profile
-  get '/settings/:id/userProfile' do
+  get '/settings/:id/userprofile' do
     check_authentication
     user = User.find(params['id'])
     if user.id != current_user.id
@@ -44,13 +44,13 @@ class MyApp < Sinatra::Base
     end
     erb :"components/app/menu",:layout => :'layouts/layout_online_menu'
   end
-  get '/settings/:id/userProfile/:fromAction/edit' do
+  get '/settings/:id/userprofile/:fromAction/edit' do
     check_authentication
     user = User.find(params['id'])
     if user.id != current_user.id
       redirect "/settings/#{current_user.id}"
     else
-      userProfile = User_Profile.new(user.id,"settings","userProfile")
+      userProfile = User_Profile.new(user.id,"settings","userprofile")
       @controller_name = userProfile.get_controller_name
       @previous_link = userProfile.get_previous_link
       @menu = userProfile.editMenu(user.id,params['fromAction'])   
@@ -60,7 +60,7 @@ class MyApp < Sinatra::Base
   end
 ## end Settings > Show user profile 
 ## Settings > Show manage password
-  get '/settings/:id/managePassword' do
+  get '/settings/:id/managepassword' do
     check_authentication
     user = User.find(params['id'])
     if user.id != current_user.id

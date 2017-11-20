@@ -4,8 +4,8 @@
             <strong><%= item[:categoryName] %></strong>
             <% item[:category].each do |sub_item| %>
                 <% if sub_item[:readMode] %>
-                    <a href="<%= sub_item[:link] %>" >
-                        <li class="mdl-list__item mdl-js-ripple-effect">
+                    <a href="<%= sub_item[:link] %>" class="test" >
+                        <li class="mdl-list__item mdl-js-ripple-effect menu_sub_item">
                             <span class="mdl-list__item-primary-content menu-title">
                                 <%= sub_item[:title] %>
                                 <span class="menu-subtitle"><%= sub_item[:subtitle] %></span>
@@ -27,10 +27,10 @@
                 <% end %>
                 <% if !sub_item[:readMode] %>
                     <% if sub_item[:formType] == 'textfield' %>
-                    <form method="POST" action="">
+                    <form method="POST" action="<%= sub_item[:formAction] %>">
                         <% sub_item[:form].each do |form| %>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-textfield-container textfield-menu-container">
-                            <input class="mdl-textfield__input" type="<%= form[:inputType] %> password" name="<%= form[:inputName] %>" id="<%= form[:inputId] %>" pattern="<%= form[:inputPattern] %>">
+                            <input class="mdl-textfield__input" type="<%= form[:inputType] %>" name="<%= form[:inputName] %>" id="<%= form[:inputId] %>" pattern="<%= form[:inputPattern] %>">
                             <label class="mdl-textfield__label" for="<%= form[:inputId] %>"><%= form[:inputLabel] %></label>
                             <span class="mdl-textfield__error"><%= form[:inputError] %></span>
                         </div>
@@ -42,7 +42,7 @@
             <br/> <br/>
         <% else %>
         <strong><%= item[:categoryName] %></strong>
-            <form method="POST" action="">
+            <form method="POST" action="<%= item[:formAction] %>">
                 <% item[:category].each do |sub_item| %>
                      <% sub_item[:form].each do |form| %>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-textfield-container textfield-menu-container">
