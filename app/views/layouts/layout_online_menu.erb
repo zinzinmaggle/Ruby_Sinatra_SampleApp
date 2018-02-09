@@ -13,10 +13,10 @@
 <div id="main-layout-online-menu">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header" id="mdl-layout-online-menu"> 
-        <a href="<%= @previous_link %>"><div class="mdl-layout__drawer-button"><i class="material-icons">arrow_back</i></div></a>
+        <a href="<%= @menu.getForwardLink() %>"><div class="mdl-layout__drawer-button"><i class="material-icons">arrow_back</i></div></a>
             <div class="mdl-layout__header-row" id="header-row-layout-online-menu">
                 <!-- Title -->
-                <span class="mdl-layout-title"><%= @controller_name %></span>
+                <span class="mdl-layout-title"><%= @menu.getTitle() %></span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <% if @saveMode %>

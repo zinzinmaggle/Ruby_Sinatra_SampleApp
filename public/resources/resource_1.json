@@ -1,0 +1,78 @@
+
+   {
+       "settings" : 
+       {
+            "userprofile" : 
+            {
+                "title" :"Profile",
+                "items_property" : [
+                    {
+                        "label": "Your Name",
+                        "table": "UserProfile",
+                        "property":"name",
+                        "icon": "edit",
+                        "action" : "edit",
+                        "findby" : "userid"
+                    },
+                    {
+                        "label": "Your Phone",
+                        "table": "UserProfile",
+                        "property":"phone",
+                        "icon": "edit",
+                        "action" : "edit",
+                        "findby" : "userid"
+                    },
+                    {
+                        "label": "Your City",
+                        "table": "UserProfile",
+                        "property":"city",
+                        "icon": "edit",
+                        "action" : "edit",
+                        "findby" : "userid"
+                    },
+                    {
+                        "label": "Your Zip-Code",
+                        "table": "UserProfile",
+                        "property":"ZIPcode",
+                        "icon": "edit",
+                        "action" : "edit",
+                        "findby" : "userid"
+                    }
+                ]
+            },
+            "manageaccount": {
+                "title" :"Manage Account",
+                "items_property" : [
+                    {
+                        "label": "Update your password",
+                        "table": "User",
+                        "property":"password",
+                        "icon": "edit",
+                        "action" : "edit",
+                        "findby" : "id"
+                    },
+                    {
+                        "label": "Update your e-mail address",
+                        "table": "User",
+                        "property":"username",
+                        "icon": "edit",
+                        "action" : "edit",
+                        "findby" : "id"
+                    }
+                ]
+            },
+            "notifications": {
+                "title" :"Notifications",
+                "items_property" : [
+                    {
+                        "label": "Enable app notifications",
+                        "table": "AppSetting",
+                        "property":"appnotifications",
+                        "icon": "",
+                        "action" : "save",
+                        "findby" : "userid"
+                    }
+                ]
+            }
+        }
+    }

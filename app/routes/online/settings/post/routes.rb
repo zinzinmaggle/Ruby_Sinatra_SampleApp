@@ -3,86 +3,87 @@ class MyApp < Sinatra::Base
   post '/settings/:id/userprofile/:action/save' do
     check_authentication
     $user = User.find(params['id'])
-    if $user.id != current_user.id
-      redirect "/settings/#{current_user.id}"
+    $action = params['action'];
+    puts $actions;
+    if $user.id != current_user.id    
+      redirect "/settings/#{current_user.id}/userProfile"
     else
-      
-      redirect "/settings/#{current_user.id}"
+      redirect "/settings/#{current_user.id}/userProfile"
     end
   end
   ## End Settings > Save User Profile 
-  ## Settings > Save User Profile > firstname
-  post '/settings/:id/userprofile/firstname/save' do
-    check_authentication
-    $user = User.find(params['id'])
-    if $user.id != current_user.id
-      redirect "/settings/#{current_user.id}"
-    else
+  # ## Settings > Save User Profile > firstname
+  # post '/settings/:id/userprofile/firstname/save' do
+  #   check_authentication
+  #   $user = User.find(params['id'])
+  #   if $user.id != current_user.id
+  #     redirect "/settings/#{current_user.id}"
+  #   else
       
-      redirect "/settings/#{current_user.id}"
-    end
-  end
-  ## End Settings > Save User Profile > firstname
-  ## Settings > Save User Profile > lastname
-  post '/settings/:id/userprofile/lastname/save' do
-    check_authentication
-    $user = User.find(params['id'])
-    if $user.id != current_user.id
-      redirect "/settings/#{current_user.id}"
-    else
+  #     redirect "/settings/#{current_user.id}"
+  #   end
+  # end
+  # ## End Settings > Save User Profile > firstname
+  # ## Settings > Save User Profile > lastname
+  # post '/settings/:id/userprofile/lastname/save' do
+  #   check_authentication
+  #   $user = User.find(params['id'])
+  #   if $user.id != current_user.id
+  #     redirect "/settings/#{current_user.id}"
+  #   else
       
-      redirect "/settings/#{current_user.id}"
-    end
-  end
-  ## End Settings > Save User Profile > lastname
-  ## Settings > Save User Profile > phone
-  post '/settings/:id/userprofile/phone/save' do
-    check_authentication
-    $user = User.find(params['id'])
-    if $user.id != current_user.id
-      redirect "/settings/#{current_user.id}"
-    else
+  #     redirect "/settings/#{current_user.id}"
+  #   end
+  # end
+  # ## End Settings > Save User Profile > lastname
+  # ## Settings > Save User Profile > phone
+  # post '/settings/:id/userprofile/phone/save' do
+  #   check_authentication
+  #   $user = User.find(params['id'])
+  #   if $user.id != current_user.id
+  #     redirect "/settings/#{current_user.id}"
+  #   else
       
-      redirect "/settings/#{current_user.id}"
-    end
-  end
-  ## End Settings > Save User Profile > phone
-  ## Settings > Save User Profile > streetaddress
-  post '/settings/:id/userprofile/streetaddress/save' do
-    check_authentication
-    $user = User.find(params['id'])
-    if $user.id != current_user.id
-      redirect "/settings/#{current_user.id}"
-    else
+  #     redirect "/settings/#{current_user.id}"
+  #   end
+  # end
+  # ## End Settings > Save User Profile > phone
+  # ## Settings > Save User Profile > streetaddress
+  # post '/settings/:id/userprofile/streetaddress/save' do
+  #   check_authentication
+  #   $user = User.find(params['id'])
+  #   if $user.id != current_user.id
+  #     redirect "/settings/#{current_user.id}"
+  #   else
       
-      redirect "/settings/#{current_user.id}"
-    end
-  end
-  ## End Settings > Save User Profile > streetaddress
-  ## Settings > Save User Profile > zipcode
-  post '/settings/:id/userprofile/zipcode/save' do
-    check_authentication
-    $user = User.find(params['id'])
-    if $user.id != current_user.id
-      redirect "/settings/#{current_user.id}"
-    else
+  #     redirect "/settings/#{current_user.id}"
+  #   end
+  # end
+  # ## End Settings > Save User Profile > streetaddress
+  # ## Settings > Save User Profile > zipcode
+  # post '/settings/:id/userprofile/zipcode/save' do
+  #   check_authentication
+  #   $user = User.find(params['id'])
+  #   if $user.id != current_user.id
+  #     redirect "/settings/#{current_user.id}"
+  #   else
       
-      redirect "/settings/#{current_user.id}"
-    end
-  end
-  ## End Settings > Save User Profile > zipcode
-  ## Settings > Save User Profile > city
-  post '/settings/:id/userprofile/city/save' do
-    check_authentication
-    $user = User.find(params['id'])
-    if $user.id != current_user.id
-      redirect "/settings/#{current_user.id}"
-    else
+  #     redirect "/settings/#{current_user.id}"
+  #   end
+  # end
+  # ## End Settings > Save User Profile > zipcode
+  # ## Settings > Save User Profile > city
+  # post '/settings/:id/userprofile/city/save' do
+  #   check_authentication
+  #   $user = User.find(params['id'])
+  #   if $user.id != current_user.id
+  #     redirect "/settings/#{current_user.id}"
+  #   else
       
-      redirect "/settings/#{current_user.id}"
-    end
-  end
-  ## End Settings > Save User Profile > city
+  #     redirect "/settings/#{current_user.id}"
+  #   end
+  # end
+  # ## End Settings > Save User Profile > city
   
 ## Settings > Save User Profile Settings
     # post '/settings/:id/userprofile/' do
