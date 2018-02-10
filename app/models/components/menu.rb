@@ -123,6 +123,7 @@ class Menu
         @forwardLink = nil
         @items = []
         @action = nil
+        @actionButton = nil
     end
 
     def setTitle (title)
@@ -132,7 +133,9 @@ class Menu
     def setAction (action)
         @action = action
     end
-
+    def setActionButton (actionButton)
+        @actionButton = actionButton
+    end
     def setForwardLink(forwardLink,default,nbtimes)
         @forwardLink = default ? forwardLink : formatForwardLink(forwardLink,nbtimes)
     end
@@ -144,13 +147,28 @@ class Menu
     def addItem(readmode, title, subtitle, icon, category, action)
         item = Item.new
         item.setReadMode(readmode)
-        item.setTitle(title, nil)
-        item.setSubTitle(subtitle, nil)
-        item.setIcon(icon)
-        item.setAction(action)
+        if(readmode)
+            item.setTitle(title, nil)
+            item.setSubTitle(subtitle, nil)
+            item.setIcon(icon)
+            item.setAction(action)
+        else
+            item.setForm(getFormInformations(title))
+        end
         @items.each do |i| i[:category] == category ? i[:list].push(item) : next end
     end
+    def addFormItem(path,route,key,property,url)
+        item = Item.new
+        $form = getFormInformations(path,route,key,property)
+        $form['action'] = url
+        item.setForm($form)
+        @items.each do |i| i[:list].push(item) end
+    end
+    def getFormInformations(path,route,key,property)
+        $json = getStaticInformations('resource_1.json')
+        return $json[path][route]['items_property'][property][key]
 
+    end
     def addCategory(name)
         @items.push({:category => name, :list => []})
     end
@@ -162,7 +180,9 @@ class Menu
     def getForwardLink()
         return @forwardLink
     end
-
+    def getActionButton()
+        return @actionButton    
+    end
     def getAction()
         return @action
     end
@@ -176,9 +196,13 @@ class Menu
         return $json[path][route]['items_property']
     end
 
-    def getRouteInformation(path,route,key)
+    def getRouteInformation(path,route,key,property)
         $json = getStaticInformations('resource_1.json')
-        return $json[path][route][key]
+        if property.nil?
+            return $json[path][route][key]
+        else
+            return $json[path][route]['items_property'][property][key]
+        end
     end
 
     def getParticularInformation(key)

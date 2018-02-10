@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823095959) do
+ActiveRecord::Schema.define(version: 20180210150552) do
 
   create_table "app_settings", force: :cascade do |t|
     t.string "appnotifications"

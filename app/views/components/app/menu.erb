@@ -4,12 +4,12 @@
                     <strong><%= menu_items[:category] %></strong>
                 <% end %>
                 <% menu_items[:list].each do |item| %>
-                    <% if item.getReadMode() %>
+                        <% if item.getForm().nil? %>
                         <a href="<%= item.getAction()  %>" class="test" >
                             <li class="mdl-list__item mdl-js-ripple-effect menu_sub_item">
                                 <span class="mdl-list__item-primary-content menu-title">
                                     <%= item.getTitle() %>
-                                    <span class="menu-subtitle"><%=  item.getSubTitle() %></span>
+                                    <span class="menu-subtitle"><%=  item.getSubTitle() ?  item.getSubTitle() : 'Complete information ...' %></span>
                                 </span>
                                 <span class="mdl-list__item-secondary-action">
                                     <% if !item.getIcon().nil? %>
@@ -17,8 +17,28 @@
                                     <% end %>
                                 </span>     
                             </li>
-                        </a>                       
-                    <% end %>
+                        </a>
+                        <% else %>
+                            <% if (item.getForm()['forms']).nil? %>
+                            <form action="<%= item.getForm()['action'] %>" method="<%= item.getForm()['method'] %>">
+                                 <div class="mdl-textfield mdl-js-textfield menu-textfield">
+                                    <input id="<%= item.getForm()['id'] %>" class="<%= item.getForm()['class'] %>" name="<%= item.getForm()['name'] %>" type="<%= item.getForm()['type'] %>" regex="<%= item.getForm()['regex'] %>" value="<%= item.getForm()['value'] %>">
+                                    <label class="mdl-textfield__label" for="<%= item.getForm()['id'] %>"></label>
+                                </div>
+                                <input type="submit" class="hidden-submit">
+                            </form>
+                            <% else %>
+                                 <form action="<%= item.getForm()['action'] %>" method="<%= item.getForm()['method'] %>">
+                                     <% item.getForm()['forms'].each do |item| %>
+                                        <div class="mdl-textfield mdl-js-textfield menu-textfield">
+                                            <input id="<%= item['id'] %>" class="<%= item['class'] %>" name="<%= item['name'] %>" type="<%= item['type'] %>" regex="<%= item['regex'] %>" value="<%= item['value'] %>">
+                                            <label class="mdl-textfield__label" for="<%= item['id'] %>"></label>
+                                        </div>
+                                    <% end %>
+                                    <input type="submit" class="hidden-submit">
+                                </form>
+                            <% end %>                
+                        <% end %>   
                 <% end %>
     <% end %>
 </ul>

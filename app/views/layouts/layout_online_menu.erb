@@ -19,9 +19,9 @@
                 <span class="mdl-layout-title"><%= @menu.getTitle() %></span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
-                <% if @saveMode %>
+                <% if @menu.getActionButton() %>
                     <nav class="mdl-navigation">
-                        <a class="mdl-navigation__link mdl-layout-title" href="#" id="save-button">Save</a>
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="actionButton">Save</button>
                     </nav>
                 <% end %>
             </div>
@@ -48,6 +48,9 @@ $(document).ready(function(){
   <% if  flash[:success] or flash[:error] %>
     setTimeout(function(){   notification.MaterialSnackbar.showSnackbar(data); }, <%= @timeout %>);
   <% end %>
+  $("#actionButton").click(function(){
+      $(".hidden-submit").click();
+  });
 });
 </script>
 </body>

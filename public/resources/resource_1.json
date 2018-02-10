@@ -4,67 +4,152 @@
        {
             "userprofile" : 
             {
-                "title" :"Profile",
-                "items_property" : [
-                    {
+                "title" :"User Profile",
+                "items_property" : 
+                  { "name":  {
                         "label": "Your Name",
                         "table": "UserProfile",
                         "property":"name",
                         "icon": "edit",
                         "action" : "edit",
-                        "findby" : "userid"
+                        "findby" : "userid",
+                        "title" : "Edit your name",
+                        "form" : {
+                            "action":"",
+                            "method": "POST",
+                            "component":"textfield",
+                            "type": "textfield",
+                            "name":"name",
+                            "regex":"",
+                            "value":"",
+                            "class":"mdl-textfield__input",
+                            "id": "namefield"
+                        }
                     },
-                    {
+                    "phone": {
                         "label": "Your Phone",
                         "table": "UserProfile",
                         "property":"phone",
                         "icon": "edit",
                         "action" : "edit",
-                        "findby" : "userid"
+                        "findby" : "userid",
+                        "title" : "Edit your phone number",
+                        "form" : {
+                            "action":"",
+                            "method": "POST",
+                            "component":"textfield",
+                            "type": "textfield",
+                            "name":"phone",
+                            "regex":"",
+                            "value":"",
+                            "class":"mdl-textfield__input",
+                            "id": "phonefield"
+                        }
                     },
-                    {
+                    "city" :{
                         "label": "Your City",
                         "table": "UserProfile",
                         "property":"city",
                         "icon": "edit",
                         "action" : "edit",
-                        "findby" : "userid"
+                        "findby" : "userid",
+                        "title" : "Edit your city",
+                        "form" : {
+                            "action":"",
+                            "method": "POST",
+                            "component":"textfield",
+                            "type": "textfield",
+                            "name":"phone",
+                            "regex":"",
+                            "value":"",
+                            "class":"mdl-textfield__input",
+                            "id": "cityfield"
+                        }
                     },
-                    {
+                   "ZIPcode": {
                         "label": "Your Zip-Code",
                         "table": "UserProfile",
                         "property":"ZIPcode",
                         "icon": "edit",
                         "action" : "edit",
-                        "findby" : "userid"
+                        "findby" : "userid",
+                        "title" : "Edit your zip-code",
+                        "form" : {
+                            "action":"",
+                            "method": "POST",
+                            "component":"textfield",
+                            "type": "phone",
+                            "name":"phone",
+                            "regex":"",
+                            "value":"",
+                            "class":"mdl-textfield__input",
+                            "id": "zipcodefield"
+                        }
                     }
-                ]
+                  }
             },
             "manageaccount": {
                 "title" :"Manage Account",
-                "items_property" : [
-                    {
+                "items_property" : {
+                   "password" : {
                         "label": "Update your password",
                         "table": "User",
                         "property":"password",
                         "icon": "edit",
                         "action" : "edit",
-                        "findby" : "id"
+                        "findby" : "id",
+                        "title" : "Edit your password",
+                        "form" : {
+                            "action":"",
+                            "method": "POST",
+                            "forms":[
+                                {
+                                    "component":"textfield",
+                                    "type": "password",
+                                    "name":"password",
+                                    "regex":"",
+                                    "value":"",
+                                    "class":"mdl-textfield__input",
+                                    "id": "passwordfield"
+                                },
+                                {
+                                    "component":"textfield",
+                                    "type": "password",
+                                    "name":"repassword",
+                                    "regex":"",
+                                    "value":"",
+                                    "class":"mdl-textfield__input",
+                                    "id": "repasswordfield"
+                                }
+                            ]
+                        }
                     },
-                    {
+                    "username": {
                         "label": "Update your e-mail address",
                         "table": "User",
                         "property":"username",
                         "icon": "edit",
                         "action" : "edit",
-                        "findby" : "id"
+                        "findby" : "id",
+                        "title" : "Edit your username",
+                        "form" : {
+                            "action":"",
+                            "method": "POST",
+                            "component":"textfield",
+                            "type": "mail",
+                            "name":"username",
+                            "regex":"",
+                            "value":"",
+                            "class":"mdl-textfield__input",
+                            "id": "usernamefield"
+                        }
                     }
-                ]
+                }
             },
             "notifications": {
                 "title" :"Notifications",
-                "items_property" : [
-                    {
+                "items_property" : {
+                    "appnotifications":{
                         "label": "Enable app notifications",
                         "table": "AppSetting",
                         "property":"appnotifications",
@@ -72,7 +157,7 @@
                         "action" : "save",
                         "findby" : "userid"
                     }
-                ]
+                }
             }
         }
     }

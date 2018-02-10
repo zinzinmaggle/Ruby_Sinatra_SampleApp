@@ -22,17 +22,26 @@ class MyApp < Sinatra::Base
 
       elsif ($route && !$property && !$action)
         @menu = Menu.new
-        @menu.setTitle(@menu.getRouteInformation("settings",$route,"title"))
+        @menu.setTitle(@menu.getRouteInformation("settings",$route,"title",nil))
         @menu.setForwardLink(request.url, false, 0)
         @menu.addCategory(nil)
-        @menu.getInformations("settings",$route).each() do |information|
+        @menu.getInformations("settings",$route).each() do |(key,information), index|
+           information =  index
            if $route === 'notifications'
             @menu.addItem(false, information["label"] , (information["table"].constantize).find_by(information["findby"] => current_user.id)[information["property"]] , information["icon"], nil, request.url+"/"+ information["property"]+"/"+information["action"])
            else
+            $class = (information["table"].constantize).new
+            $class.initRow($class,(information["table"].constantize).find_by(information["findby"] => current_user.id),current_user.id)
             @menu.addItem(true, information["label"] , (information["table"].constantize).find_by(information["findby"] => current_user.id)[information["property"]] , information["icon"], nil, request.url+"/"+ information["property"]+"/"+information["action"])
            end
         end
       else
+        @menu = Menu.new
+        @menu.setActionButton(true)
+        @menu.setTitle(@menu.getRouteInformation("settings",$route,"title",$property))
+        @menu.setForwardLink(request.url, false, 1)
+        @menu.addCategory(nil)
+        @menu.addFormItem("settings",$route,"form",$property, request.url)
       end     
     end
       erb :"components/app/menu", :layout => :'layouts/layout_online_menu' 

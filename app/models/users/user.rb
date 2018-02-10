@@ -8,6 +8,15 @@ class User < ActiveRecord::Base
     validates :password, presence: true, length: { minimum: 6 }
     before_save { self.username = username.downcase }
 
+    def initRow(pclass,row,userId)
+      if (row.nil?)
+          pclass.assign_attributes(
+              id: userId
+            )
+          pclass.save
+      end
+    end
+
     def authenticate(attempted_password)
         if BCrypt::Password.new(password) == attempted_password
           true

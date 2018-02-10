@@ -4,6 +4,7 @@ class Item < Menu
         @subtitle = "Sample subtitle"
         @readmode = false
         @icon = nil
+        @form = nil
     end
 
     def setTitle (title, data)
@@ -22,6 +23,10 @@ class Item < Menu
         @icon = icon
     end
 
+    def setForm(form)
+        @form = form
+    end
+
     def getTitle()
         return @title
     end
@@ -36,6 +41,10 @@ class Item < Menu
 
     def getIcon()
         return @icon
+    end
+
+    def getForm()
+        return @form
     end
 
 end
