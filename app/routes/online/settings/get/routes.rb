@@ -14,34 +14,32 @@ class MyApp < Sinatra::Base
         @menu = Menu.new
         @menu.setTitle("Settings")
         @menu.setForwardLink("/dashboard/#{current_user.id}", true, nil)
-        @menu.addCategory("User Account")
-        @menu.addItem(true, "Profile" , "Manage your user profile", nil, "User Account", request.url+"/userprofile")
-        @menu.addItem(true, "Account" , "Manage your user account", nil, "User Account", request.url+"/manageaccount")
-        @menu.addCategory("General")
-        @menu.addItem(true, "Notifications" , "Manage your notifications settings", nil, "General", request.url+"/notifications")
+        @menu.addCategory("About Ya")
+        @menu.addItem("Profile" , "Manage your user profile", nil, "About Ya", request.url+"/userprofile",false)
+        @menu.addItem("Account" , "Manage your user account", nil, "About Ya", request.url+"/manageaccount", true)
+        @menu.addCategory("Application Settings")
+        @menu.addItem("Notifications" , "Manage your notifications settings", nil, "Application Settings", request.url+"/appsettings",true)
 
       elsif ($route && !$property && !$action)
         @menu = Menu.new
-        @menu.setTitle(@menu.getRouteInformation("settings",$route,"title",nil))
+        @menu.setTitle(@menu.getRouteInformation("settings",$route,nil,"title"))
         @menu.setForwardLink(request.url, false, 0)
         @menu.addCategory(nil)
         @menu.getInformations("settings",$route).each() do |(key,information), index|
-           information =  index
-           if $route === 'notifications'
-            @menu.addItem(false, information["label"] , (information["table"].constantize).find_by(information["findby"] => current_user.id)[information["property"]] , information["icon"], nil, request.url+"/"+ information["property"]+"/"+information["action"])
-           else
-            $class = (information["table"].constantize).new
-            $class.initRow($class,(information["table"].constantize).find_by(information["findby"] => current_user.id),current_user.id)
-            @menu.addItem(true, information["label"] , (information["table"].constantize).find_by(information["findby"] => current_user.id)[information["property"]] , information["icon"], nil, request.url+"/"+ information["property"]+"/"+information["action"])
-           end
+            $class = index["table"].constantize.new($class,(index["table"].constantize).find_by(index["findby"] => current_user.id),current_user.id)
+            if index['readmode'] === false
+              @menu.addFormItem("settings",$route, index["item_name"],"form", request.url)
+            else
+              @menu.addItem(index["label"] , (index["table"].constantize).find_by(index["findby"] => current_user.id)[index["property"]] , index["icon"], nil, request.url+"/"+ index["property"]+"/"+index["action"],false)
+            end
         end
       else
         @menu = Menu.new
         @menu.setActionButton(true)
-        @menu.setTitle(@menu.getRouteInformation("settings",$route,"title",$property))
+        @menu.setTitle(@menu.getRouteInformation("settings",$route,$property,"title"))
         @menu.setForwardLink(request.url, false, 1)
         @menu.addCategory(nil)
-        @menu.addFormItem("settings",$route,"form",$property, request.url)
+        @menu.addFormItem("settings",$route,$property,"form", request.url)
       end     
     end
       erb :"components/app/menu", :layout => :'layouts/layout_online_menu' 

@@ -4,7 +4,7 @@
        {
             "userprofile" : 
             {
-                "title" :"User Profile",
+                "title" :"Profile",
                 "items_property" : 
                   { "name":  {
                         "label": "Your Name",
@@ -23,7 +23,8 @@
                             "regex":"",
                             "value":"",
                             "class":"mdl-textfield__input",
-                            "id": "namefield"
+                            "id": "namefield",
+                            "placeholder": "Ex : John Snow"
                         }
                     },
                     "phone": {
@@ -89,7 +90,7 @@
                   }
             },
             "manageaccount": {
-                "title" :"Manage Account",
+                "title" :"Account",
                 "items_property" : {
                    "password" : {
                         "label": "Update your password",
@@ -146,16 +147,50 @@
                     }
                 }
             },
-            "notifications": {
-                "title" :"Notifications",
+            "appsettings":{
+                "title" :"Application settings",
                 "items_property" : {
-                    "appnotifications":{
-                        "label": "Enable app notifications",
-                        "table": "AppSetting",
-                        "property":"appnotifications",
-                        "icon": "",
-                        "action" : "save",
-                        "findby" : "userid"
+                    "notifications": {
+                                "item_name" : "notifications",
+                                "readmode" : false,
+                                "label": "Enable push notifications",
+                                "sublabel" : "Allow the app to send push notifications on your phone, desktop ...",
+                                "table": "AppSetting",
+                                "property":"appnotifications",
+                                "icon": "",
+                                "action" : "save",
+                                "findby" : "userid",
+                                "form" : {
+                                    "action":"",
+                                    "method": "POST",
+                                    "component":"checkbox",
+                                    "type": "checkbox",
+                                    "name":"enableAppNotifications",
+                                    "regex":"",
+                                    "value":"",
+                                    "class":"mdl-switch__input",
+                                    "id": "enableappnotificationsfield"
+                                }
+                    },
+                    "username": {
+                        "label": "Update your e-mail address",
+                        "table": "User",
+                        "property":"username",
+                        "icon": "edit",
+                        "action" : "edit",
+                        "findby" : "id",
+                        "title" : "Edit your username",
+                        "form" : {
+                            "action":"",
+                            "method": "POST",
+                            "component":"textfield",
+                            "type": "mail",
+                            "name":"username",
+                            "regex":"",
+                            "value":"",
+                            "class":"mdl-textfield__input",
+                            "id": "usernamefield"
+                        }
                     }
                 }
             }

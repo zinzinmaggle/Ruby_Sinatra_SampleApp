@@ -2,9 +2,10 @@ class Item < Menu
     def initialize
         @title = "Sample title"
         @subtitle = "Sample subtitle"
-        @readmode = false
         @icon = nil
         @form = nil
+        @readmode = true
+        @isLastItem = false
     end
 
     def setTitle (title, data)
@@ -15,16 +16,20 @@ class Item < Menu
         @subtitle = subtitle
     end
 
-    def setReadMode(readmode)
-        @readmode = readmode
-    end
-
     def setIcon(icon)
         @icon = icon
     end
 
     def setForm(form)
         @form = form
+    end
+
+    def setReadmode(readmode)
+        @readmode = readmode
+    end
+
+    def setIsLastItem(isLastItem)
+        @isLastItem = isLastItem
     end
 
     def getTitle()
@@ -35,16 +40,20 @@ class Item < Menu
         return @subtitle
     end
 
-    def getReadMode()
-        return @readmode
-    end
-
     def getIcon()
         return @icon
     end
 
     def getForm()
         return @form
+    end
+
+    def getReadmode()
+        return @readmode
+    end
+
+    def getIsLastItem()
+        return @isLastItem
     end
 
 end

@@ -19,22 +19,23 @@
                 <span class="mdl-layout-title"><%= @menu.getTitle() %></span>
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
-                <% if @menu.getActionButton() %>
-                    <nav class="mdl-navigation">
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="actionButton">Save</button>
-                    </nav>
-                <% end %>
             </div>
         </header>
         <main class="mdl-layout__content">
-            <div class="page-content"> <%= yield %> </div>
+            <div class="page-content"> 
+                <%= yield %> 
+            </div>
+            <% if @menu.getActionButton() %>
+                <button class="mdl-button mdl-js-button mdl-button--accent" id="actionButton">Save</button>
+            <% end %>
         </main>
     </div>
 </div>
+
 <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar" id="snackbar-online-menu">
-<div class="mdl-snackbar__text">
-</div>
-<button type="button" class="mdl-snackbar__action"></button>
+    <div class="mdl-snackbar__text">
+    </div>
+    <button type="button" class="mdl-snackbar__action"></button>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){

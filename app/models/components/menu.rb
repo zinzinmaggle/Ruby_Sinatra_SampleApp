@@ -144,27 +144,29 @@ class Menu
         return forwardLink.gsub(/(\/\w+){#{nbtimes}}(\/\w+$)/, '')         
     end
 
-    def addItem(readmode, title, subtitle, icon, category, action)
+    def addItem(title, subtitle, icon, category, action,isLastItem)
         item = Item.new
-        item.setReadMode(readmode)
-        if(readmode)
-            item.setTitle(title, nil)
-            item.setSubTitle(subtitle, nil)
-            item.setIcon(icon)
-            item.setAction(action)
-        else
-            item.setForm(getFormInformations(title))
-        end
+        item.setTitle(title, nil)
+        item.setSubTitle(subtitle, nil)
+        item.setIcon(icon)
+        item.setAction(action)
+        item.setIsLastItem(isLastItem)
         @items.each do |i| i[:category] == category ? i[:list].push(item) : next end
     end
-    def addFormItem(path,route,key,property,url)
+    def addFormItem(path,route,property,key,url)
         item = Item.new
-        $form = getFormInformations(path,route,key,property)
+        $form = getFormInformations(path,route,property,key)
+        $information = getInformations(path,route)
+        if($information[property]['readmode'] === false)
+            item.setReadmode($information[property]['readmode'])
+            item.setTitle($information[property]['label'], nil)
+            item.setSubTitle($information[property]['sublabel'], nil)
+        end
         $form['action'] = url
         item.setForm($form)
         @items.each do |i| i[:list].push(item) end
     end
-    def getFormInformations(path,route,key,property)
+    def getFormInformations(path,route,property,key)
         $json = getStaticInformations('resource_1.json')
         return $json[path][route]['items_property'][property][key]
 
@@ -196,11 +198,12 @@ class Menu
         return $json[path][route]['items_property']
     end
 
-    def getRouteInformation(path,route,key,property)
+    def getRouteInformation(path,route,property,key)
         $json = getStaticInformations('resource_1.json')
         if property.nil?
             return $json[path][route][key]
         else
+            puts $json[path][route]['items_property'][property][key]
             return $json[path][route]['items_property'][property][key]
         end
     end

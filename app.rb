@@ -37,6 +37,9 @@ Dir['./lib/*.rb'].each { |file| require_relative file }
 Dir['./config/*.rb'].each { |file| require_relative file }
 # require models
 Dir['./app/models/*.rb'].each { |file| require_relative file }
+Dir['./app/models/components/*.rb'].each { |file| require_relative file }
+Dir['./app/models/settings/*.rb'].each { |file| require_relative file }
+Dir['./app/models/users/*.rb'].each { |file| require_relative file }
 # require controllers
 Dir['./app/controllers/*.rb'].each { |file| require_relative file }
 # require routes

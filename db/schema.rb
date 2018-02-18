@@ -10,21 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210150552) do
+ActiveRecord::Schema.define(version: 20180211145100) do
 
   create_table "app_settings", force: :cascade do |t|
     t.string "appnotifications"
     t.integer "userid", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "application_items", force: :cascade do |t|
-    t.string "appname"
-    t.string "appframework"
-    t.integer "userid"
-    t.string "category"
-    t.string "filename"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

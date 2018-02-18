@@ -1,14 +1,16 @@
 class MyApp < Sinatra::Base
   ## Settings > Save User Profile
-  post '/settings/:id/userprofile/:action/save' do
+  post '/settings/:id/?:route?/?:property?/?:action?' do
     check_authentication
     $user = User.find(params['id'])
-    $action = params['action'];
-    puts $actions;
+    $route = params['route']
+    $property = params['property']
+    $action = params['action']
+    puts params
     if $user.id != current_user.id    
-      redirect "/settings/#{current_user.id}/userProfile"
+      redirect "/settings/#{current_user.id}/#{$route}"
     else
-      redirect "/settings/#{current_user.id}/userProfile"
+      redirect "/settings/#{current_user.id}/#{$route}"
     end
   end
   ## End Settings > Save User Profile 
