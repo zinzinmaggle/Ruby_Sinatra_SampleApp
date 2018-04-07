@@ -121,9 +121,9 @@ class Menu
     def initialize
         @title = nil
         @forwardLink = nil
-        @items = []
         @action = nil
         @actionButton = nil
+        @categories = []
     end
 
     def setTitle (title)
@@ -144,37 +144,6 @@ class Menu
         return forwardLink.gsub(/(\/\w+){#{nbtimes}}(\/\w+$)/, '')         
     end
 
-    def addItem(title, subtitle, icon, category, action,isLastItem)
-        item = Item.new
-        item.setTitle(title, nil)
-        item.setSubTitle(subtitle, nil)
-        item.setIcon(icon)
-        item.setAction(action)
-        item.setIsLastItem(isLastItem)
-        @items.each do |i| i[:category] == category ? i[:list].push(item) : next end
-    end
-    def addFormItem(path,route,property,key,url)
-        item = Item.new
-        $form = getFormInformations(path,route,property,key)
-        $information = getInformations(path,route)
-        if($information[property]['readmode'] === false)
-            item.setReadmode($information[property]['readmode'])
-            item.setTitle($information[property]['label'], nil)
-            item.setSubTitle($information[property]['sublabel'], nil)
-        end
-        $form['action'] = url
-        item.setForm($form)
-        @items.each do |i| i[:list].push(item) end
-    end
-    def getFormInformations(path,route,property,key)
-        $json = getStaticInformations('resource_1.json')
-        return $json[path][route]['items_property'][property][key]
-
-    end
-    def addCategory(name)
-        @items.push({:category => name, :list => []})
-    end
-
     def getTitle()
         return @title
     end
@@ -189,31 +158,67 @@ class Menu
         return @action
     end
 
-    def getItems()
-        return @items
+    def getCategories()
+        return @categories
     end
 
-    def getInformations(path,route)
-        $json = getStaticInformations('resource_1.json')
-        return $json[path][route]['items_property']
+    def setCategories()
     end
 
-    def getRouteInformation(path,route,property,key)
-        $json = getStaticInformations('resource_1.json')
-        if property.nil?
-            return $json[path][route][key]
-        else
-            puts $json[path][route]['items_property'][property][key]
-            return $json[path][route]['items_property'][property][key]
+    def setCategories(json,controller_name,route,property,action)
+        $categories = getParticularInformation(json,controller_name,route,property,action, 'categories')
+        $categories.each do |val|
+            $category = Category.new
+            $category_name = nil
+            if (!val[category_name].nil?) 
+                $category_name = val[category_name]
+            end
+            $category.setCategoryName($category_name)
+            $category.setItems(getParticularInformation(json,controller_name,route,property,action, 'items'))
+            @categories.push($category)
         end
     end
 
-    def getParticularInformation(key)
+    def setItems(items)
+        items.each do |val, index|
+            $item = Item.new
+            $item.setTitle(val[title])
+            $item.setSubtitle(val[subtitle])
+            $item.setIcon(val[icon])
+            $item.setFixture(val[fixture])
+            $item.setReadmode(val[readmode])
+            $item.setIsLastItem(val[isLastItem])
+            $item.setForms(val[forms])
+            $item.setRedirect(val[redirect])
+            @items.push($item)
+        end
     end
 
-    def getStaticInformations(resource)
-        file = File.read(File.join('public', 'resources/'+resource))
+    def getParticularInformation(json,controller_name,route,property,action,information)
+        json[controller_name].each do |val|
+            if( !route && !property && !action)
+                return val[information]
+            elsif(route && !property && !action)
+                return val[route][information]
+            elsif (route && property && action)
+                return val[route][property][action][information]
+            end
+        end
+    end
+
+    def getJsonParsedResource(resource)
+        file = File.read(File.join('public', 'resources/'+resource+'/'+resource+'.json'))
         return JSON.parse(file)
+    end
+
+    def build(controller_name,route,property,action)
+        
+        $json = getJsonParsedResource('settings')
+        self.setTitle(getParticularInformation($json,controller_name,route,property,action,'title'))
+        self.setForwardLink()
+        self.setActionButton()
+        self.setCategories($json,controller_name,route,property,action)
+    
     end
 
 end

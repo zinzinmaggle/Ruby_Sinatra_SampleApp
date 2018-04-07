@@ -1,0 +1,111 @@
+
+   {
+       "settings" : 
+       {
+           "title":"Settings",
+           "categories":[{
+                "category_name" : "About Ya",
+                "items":[{
+                    "profile" : {
+                        "readmode":true,
+                        "fixture" : true,
+                        "title" : "Profile",
+                        "subtitle":"Manage your user profile",
+                        "redirect":"/userprofile"
+                    },
+                    "account":{
+                        "readmode":true,
+                        "fixture" : true,
+                        "title" : "Account",
+                        "subtitle":"Manage your user account",
+                        "redirect":"/manageaccount"
+                    }
+                }]
+            },
+            {
+                "category_name" : "Application Settings",
+                "items":[{
+                    "notifications" : {
+                        "readmode":false,
+                        "fixture" : false,
+                        "title" : "Notifications",
+                        "subtitle":"Enable app notifications",
+                        "forms":[{
+                            "action": "/applicationsettings/notifications/edit",
+                            "method":"POST",
+                            "db_query":{
+                                "table": "AppSetting",
+                                "property":"appnotifications",
+                                "findby" : "userid"
+                            },
+                            "fields":[{
+                                    "type": "checkbox",
+                                    "name":"toggleNotifications",
+                                    "regex":"",
+                                    "value": {
+                                        "table": "AppSetting",
+                                        "property":"appnotifications",
+                                        "findby" : "userid",
+                                        "default" : false
+                                    },
+                                    "class":"mdl-switch__input",
+                                    "id": "toggleNotificationsField"
+                            }]
+                        }]              
+                    }
+                }]
+            }],
+            "userprofile" : {
+                "title" :"Profile",
+                "categories":[{
+                    "items" : [{
+                        "name":  {
+                            "readmode": true,
+                            "fixture": false,
+                            "title": "Your Name",
+                            "subtitle": {
+                                "table": "UserProfile",
+                                "property":"name",
+                                "findby" : "userid",
+                                "default": "Complete information..."
+                            },
+                            "icon": "edit",
+                            "redirect" : "/name/edit"
+                        }
+                    }]
+                }]
+            },
+            "name":{
+                "edit":{
+                    "title":"Edit your name",
+                    "categories":[{
+                        "items":[{
+                            "name":{
+                                "readmode":false,
+                                "fixture":false,
+                                "forms":[{
+                                    "action": "/userprofile/name/edit",
+                                    "method":"POST",
+                                    "db_query":{
+                                        "table": "UserProfile",
+                                        "property":"name",
+                                        "findby" : "userid"
+                                    },
+                                    "fields":[{
+                                            "type": "textfield",
+                                            "name":"name",
+                                            "regex":"",
+                                            "class":"mdl-textfield__input",
+                                            "id": "namefield",
+                                            "placeholder": "Ex : John Snow"
+                                    }]
+                                }] 
+                            }        
+                        }] 
+                    }]       
+                }
+            }
+        }
+    }
+
+                  

@@ -1,18 +1,24 @@
-class Item < Menu
+class Item
     def initialize
         @title = "Sample title"
         @subtitle = "Sample subtitle"
         @icon = nil
-        @form = nil
-        @readmode = true
-        @isLastItem = false
+        @forms = nil
+        @readmode = nil
+        @fixture = nil
+        @isLastItem = nil
+        @redirect = nil
     end
 
-    def setTitle (title, data)
+    def setTitle (title)
         @title = title
     end
 
-    def setSubTitle (subtitle,data)
+    def setFixture(fixture)
+        @fixture = fixture
+    end
+
+    def setSubTitle (subtitle)
         @subtitle = subtitle
     end
 
@@ -20,7 +26,7 @@ class Item < Menu
         @icon = icon
     end
 
-    def setForm(form)
+    def setForms(form)
         @form = form
     end
 
@@ -32,8 +38,16 @@ class Item < Menu
         @isLastItem = isLastItem
     end
 
+    def setRedirect(redirect)
+        @redirect = redirect
+    end
+
     def getTitle()
         return @title
+    end
+
+    def getFixture()
+        return @fixture
     end
 
     def getSubTitle()
@@ -44,7 +58,7 @@ class Item < Menu
         return @icon
     end
 
-    def getForm()
+    def getForms()
         return @form
     end
 
@@ -54,6 +68,10 @@ class Item < Menu
 
     def getIsLastItem()
         return @isLastItem
+    end
+
+    def getRedirect()
+        return @redirect
     end
 
 end
